@@ -1,0 +1,701 @@
+[{
+  "isbn": "427899663-2",
+  "title": "Lake Mungo",
+  "copyright": 2006,
+  "synposis": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",
+  "pages": 394,
+  "publisher_id": 78
+}, {
+  "isbn": "702613724-7",
+  "title": "Hitting Home",
+  "copyright": 2000,
+  "synposis": "Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "pages": 224,
+  "publisher_id": 151
+}, {
+  "isbn": "058916080-X",
+  "title": "Romancing the Stone",
+  "copyright": 2011,
+  "synposis": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "pages": 201,
+  "publisher_id": 110
+}, {
+  "isbn": "826808012-4",
+  "title": "Keep, The",
+  "copyright": 1999,
+  "synposis": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
+  "pages": 160,
+  "publisher_id": 59
+}, {
+  "isbn": "926862968-2",
+  "title": "Road to Singapore",
+  "copyright": 1994,
+  "synposis": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "pages": 751,
+  "publisher_id": 104
+}, {
+  "isbn": "309283475-5",
+  "title": "Shark Tale",
+  "copyright": 1994,
+  "synposis": "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+  "pages": 849,
+  "publisher_id": 154
+}, {
+  "isbn": "828849703-9",
+  "title": "Undisputed II: Last Man Standing",
+  "copyright": 1998,
+  "synposis": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+  "pages": 869,
+  "publisher_id": 144
+}, {
+  "isbn": "633757822-8",
+  "title": "Taqwacore: The Birth of Punk Islam",
+  "copyright": 1987,
+  "synposis": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "pages": 438,
+  "publisher_id": 169
+}, {
+  "isbn": "099838533-6",
+  "title": "Tic Code, The",
+  "copyright": 1999,
+  "synposis": "In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
+  "pages": 540,
+  "publisher_id": 64
+}, {
+  "isbn": "129119790-7",
+  "title": "Double Whammy",
+  "copyright": 2008,
+  "synposis": "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",
+  "pages": 472,
+  "publisher_id": 76
+}, {
+  "isbn": "451529987-5",
+  "title": "Night Tide",
+  "copyright": 2001,
+  "synposis": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
+  "pages": 754,
+  "publisher_id": 148
+}, {
+  "isbn": "008546792-8",
+  "title": "Superman III",
+  "copyright": 2011,
+  "synposis": "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.",
+  "pages": 460,
+  "publisher_id": 154
+}, {
+  "isbn": "252298764-X",
+  "title": "Zidane: A 21st Century Portrait (Zidane, un portrait du 21e siècle)",
+  "copyright": 1993,
+  "synposis": "Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "pages": 959,
+  "publisher_id": 149
+}, {
+  "isbn": "235715385-7",
+  "title": "Stick It",
+  "copyright": 1984,
+  "synposis": "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.",
+  "pages": 393,
+  "publisher_id": 114
+}, {
+  "isbn": "896774790-X",
+  "title": "Irresistible",
+  "copyright": 1968,
+  "synposis": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+  "pages": 758,
+  "publisher_id": 177
+}, {
+  "isbn": "634973828-4",
+  "title": "Army of Shadows (L'armée des ombres)",
+  "copyright": 2000,
+  "synposis": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
+  "pages": 602,
+  "publisher_id": 26
+}, {
+  "isbn": "805563330-4",
+  "title": "Ganes",
+  "copyright": 2012,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.",
+  "pages": 298,
+  "publisher_id": 67
+}, {
+  "isbn": "061138853-7",
+  "title": "Dancer, Texas Pop. 81",
+  "copyright": 1989,
+  "synposis": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit.",
+  "pages": 234,
+  "publisher_id": 24
+}, {
+  "isbn": "727002460-X",
+  "title": "Liar's Autobiography: The Untrue Story of Monty Python's Graham Chapman, A",
+  "copyright": 1989,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
+  "pages": 501,
+  "publisher_id": 106
+}, {
+  "isbn": "919553707-4",
+  "title": "Blackbeard's Ghost",
+  "copyright": 2002,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+  "pages": 259,
+  "publisher_id": 43
+}, {
+  "isbn": "373800401-7",
+  "title": "Destroy All Monsters (Kaijû sôshingeki)",
+  "copyright": 1989,
+  "synposis": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+  "pages": 180,
+  "publisher_id": 91
+}, {
+  "isbn": "816508889-0",
+  "title": "Good Ol' Freda",
+  "copyright": 2004,
+  "synposis": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+  "pages": 781,
+  "publisher_id": 3
+}, {
+  "isbn": "206253704-2",
+  "title": "Yolki 2",
+  "copyright": 2007,
+  "synposis": "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
+  "pages": 491,
+  "publisher_id": 35
+}, {
+  "isbn": "081894862-0",
+  "title": "Desperate Journey",
+  "copyright": 2008,
+  "synposis": "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.",
+  "pages": 308,
+  "publisher_id": 27
+}, {
+  "isbn": "130192280-3",
+  "title": "Nicht alle waren Mörder",
+  "copyright": 2008,
+  "synposis": "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.",
+  "pages": 162,
+  "publisher_id": 144
+}, {
+  "isbn": "579424873-4",
+  "title": "Pet Sematary II",
+  "copyright": 2004,
+  "synposis": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+  "pages": 338,
+  "publisher_id": 66
+}, {
+  "isbn": "830106365-3",
+  "title": "Thieves' Highway",
+  "copyright": 2008,
+  "synposis": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.",
+  "pages": 289,
+  "publisher_id": 48
+}, {
+  "isbn": "552144470-X",
+  "title": "Man Called Sledge, A",
+  "copyright": 2012,
+  "synposis": "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.",
+  "pages": 984,
+  "publisher_id": 162
+}, {
+  "isbn": "593491301-8",
+  "title": "Da Vinci Code, The",
+  "copyright": 2006,
+  "synposis": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
+  "pages": 799,
+  "publisher_id": 66
+}, {
+  "isbn": "949386208-9",
+  "title": "Love Don't Cost a Thing",
+  "copyright": 2012,
+  "synposis": "Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+  "pages": 588,
+  "publisher_id": 134
+}, {
+  "isbn": "103039091-6",
+  "title": "Christmas Carol, A (Scrooge)",
+  "copyright": 2002,
+  "synposis": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.",
+  "pages": 811,
+  "publisher_id": 94
+}, {
+  "isbn": "575135051-0",
+  "title": "Lavender Hill Mob, The",
+  "copyright": 2009,
+  "synposis": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.",
+  "pages": 482,
+  "publisher_id": 131
+}, {
+  "isbn": "141394303-9",
+  "title": "The Violent Enemy",
+  "copyright": 2010,
+  "synposis": "Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+  "pages": 915,
+  "publisher_id": 8
+}, {
+  "isbn": "729020016-0",
+  "title": "Wallace & Gromit in The Curse of the Were-Rabbit",
+  "copyright": 1998,
+  "synposis": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+  "pages": 734,
+  "publisher_id": 4
+}, {
+  "isbn": "525812915-2",
+  "title": "Mouth to Mouth (Boca a boca)",
+  "copyright": 2001,
+  "synposis": "Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "pages": 451,
+  "publisher_id": 64
+}, {
+  "isbn": "651823811-9",
+  "title": "Little Odessa",
+  "copyright": 1997,
+  "synposis": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.",
+  "pages": 979,
+  "publisher_id": 23
+}, {
+  "isbn": "924766425-X",
+  "title": "Forks Over Knives",
+  "copyright": 1986,
+  "synposis": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+  "pages": 551,
+  "publisher_id": 14
+}, {
+  "isbn": "305265522-1",
+  "title": "Chant of Jimmy Blacksmith, The",
+  "copyright": 2010,
+  "synposis": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
+  "pages": 162,
+  "publisher_id": 126
+}, {
+  "isbn": "657555583-7",
+  "title": "Sound of Redemption: The Frank Morgan Story",
+  "copyright": 2008,
+  "synposis": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
+  "pages": 412,
+  "publisher_id": 4
+}, {
+  "isbn": "871430770-7",
+  "title": "Call of Cthulhu, The",
+  "copyright": 1989,
+  "synposis": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+  "pages": 233,
+  "publisher_id": 92
+}, {
+  "isbn": "582046397-8",
+  "title": "Drowning by Numbers",
+  "copyright": 2012,
+  "synposis": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis.",
+  "pages": 957,
+  "publisher_id": 179
+}, {
+  "isbn": "835196043-8",
+  "title": "Dark Skies",
+  "copyright": 2009,
+  "synposis": "In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst.",
+  "pages": 856,
+  "publisher_id": 132
+}, {
+  "isbn": "275988096-6",
+  "title": "Hail Mary ('Je vous salue, Marie')",
+  "copyright": 2002,
+  "synposis": "Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+  "pages": 934,
+  "publisher_id": 123
+}, {
+  "isbn": "860453733-3",
+  "title": "Mysterious Origins of Man",
+  "copyright": 2008,
+  "synposis": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.",
+  "pages": 928,
+  "publisher_id": 46
+}, {
+  "isbn": "355599478-6",
+  "title": "Passionate Friends, The (a.k.a. One Woman's Story)",
+  "copyright": 2000,
+  "synposis": "Donec posuere metus vitae ipsum. Aliquam non mauris.",
+  "pages": 436,
+  "publisher_id": 32
+}, {
+  "isbn": "441056762-4",
+  "title": "Challenge to Lassie",
+  "copyright": 1996,
+  "synposis": "Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
+  "pages": 585,
+  "publisher_id": 171
+}, {
+  "isbn": "667280779-9",
+  "title": "Joe Strummer: The Future Is Unwritten",
+  "copyright": 2012,
+  "synposis": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.",
+  "pages": 841,
+  "publisher_id": 26
+}, {
+  "isbn": "452069445-0",
+  "title": "You Don't Mess with the Zohan",
+  "copyright": 2002,
+  "synposis": "Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh.",
+  "pages": 681,
+  "publisher_id": 58
+}, {
+  "isbn": "712942854-6",
+  "title": "Unfair Competition (Concorrenza sleale)",
+  "copyright": 1985,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+  "pages": 702,
+  "publisher_id": 178
+}, {
+  "isbn": "147694820-8",
+  "title": "Shattered Image",
+  "copyright": 1995,
+  "synposis": "Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+  "pages": 340,
+  "publisher_id": 79
+}, {
+  "isbn": "972317916-4",
+  "title": "Balto",
+  "copyright": 1992,
+  "synposis": "Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
+  "pages": 649,
+  "publisher_id": 85
+}, {
+  "isbn": "016088519-1",
+  "title": "Silent Night, Deadly Night",
+  "copyright": 2012,
+  "synposis": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.",
+  "pages": 525,
+  "publisher_id": 145
+}, {
+  "isbn": "387081142-0",
+  "title": "Good Man, A (Un buen hombre)",
+  "copyright": 2002,
+  "synposis": "Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.",
+  "pages": 762,
+  "publisher_id": 104
+}, {
+  "isbn": "100871254-X",
+  "title": "Thief of Hearts",
+  "copyright": 1999,
+  "synposis": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+  "pages": 382,
+  "publisher_id": 168
+}, {
+  "isbn": "830960825-X",
+  "title": "Incident at Loch Ness",
+  "copyright": 2001,
+  "synposis": "In hac habitasse platea dictumst. Etiam faucibus cursus urna.",
+  "pages": 669,
+  "publisher_id": 79
+}, {
+  "isbn": "618180755-1",
+  "title": "Colonel Chabert, Le",
+  "copyright": 2008,
+  "synposis": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "pages": 570,
+  "publisher_id": 74
+}, {
+  "isbn": "894404362-0",
+  "title": "Call Girl",
+  "copyright": 1996,
+  "synposis": "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+  "pages": 209,
+  "publisher_id": 76
+}, {
+  "isbn": "771634747-0",
+  "title": "Exodus (Cheut ai kup gei)",
+  "copyright": 2011,
+  "synposis": "Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.",
+  "pages": 871,
+  "publisher_id": 159
+}, {
+  "isbn": "596330059-2",
+  "title": "Love Is Strange",
+  "copyright": 2012,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
+  "pages": 536,
+  "publisher_id": 120
+}, {
+  "isbn": "737120096-9",
+  "title": "Bonsái",
+  "copyright": 1999,
+  "synposis": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.",
+  "pages": 697,
+  "publisher_id": 162
+}, {
+  "isbn": "786130736-0",
+  "title": "Paragraph 175",
+  "copyright": 1999,
+  "synposis": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+  "pages": 777,
+  "publisher_id": 51
+}, {
+  "isbn": "066677611-3",
+  "title": "President's Man, The",
+  "copyright": 2010,
+  "synposis": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",
+  "pages": 223,
+  "publisher_id": 47
+}, {
+  "isbn": "099487869-9",
+  "title": "Dragon Age: Redemption",
+  "copyright": 2004,
+  "synposis": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",
+  "pages": 667,
+  "publisher_id": 95
+}, {
+  "isbn": "995950301-1",
+  "title": "Road Warrior, The (Mad Max 2)",
+  "copyright": 1990,
+  "synposis": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
+  "pages": 515,
+  "publisher_id": 53
+}, {
+  "isbn": "532838274-9",
+  "title": "Diary of a Wimpy Kid: Rodrick Rules",
+  "copyright": 2010,
+  "synposis": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "pages": 557,
+  "publisher_id": 93
+}, {
+  "isbn": "012995817-4",
+  "title": "Uncle Marin, the Billionaire (Nea Marin miliardar) (Uncle Martin, the Multimillionaire)",
+  "copyright": 2010,
+  "synposis": "Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
+  "pages": 891,
+  "publisher_id": 96
+}, {
+  "isbn": "665549611-X",
+  "title": "That Evening Sun",
+  "copyright": 2001,
+  "synposis": "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+  "pages": 633,
+  "publisher_id": 101
+}, {
+  "isbn": "951608142-8",
+  "title": "Sometimes Happiness, Sometimes Sorrow (Kabhi Khushi Kabhie Gham)",
+  "copyright": 1985,
+  "synposis": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.",
+  "pages": 585,
+  "publisher_id": 23
+}, {
+  "isbn": "896654802-4",
+  "title": "Dane Cook: Vicious Circle",
+  "copyright": 2007,
+  "synposis": "Pellentesque at nulla. Suspendisse potenti.",
+  "pages": 468,
+  "publisher_id": 34
+}, {
+  "isbn": "234998666-7",
+  "title": "Oasis",
+  "copyright": 1998,
+  "synposis": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+  "pages": 233,
+  "publisher_id": 175
+}, {
+  "isbn": "055643132-4",
+  "title": "Last Valley, The",
+  "copyright": 2006,
+  "synposis": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+  "pages": 290,
+  "publisher_id": 130
+}, {
+  "isbn": "435507276-2",
+  "title": "Millionaire for Christy, A (Golden Goose) (No Room for the Groom)",
+  "copyright": 2000,
+  "synposis": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+  "pages": 493,
+  "publisher_id": 69
+}, {
+  "isbn": "415604375-4",
+  "title": "Adventures of Ford Fairlane, The",
+  "copyright": 2003,
+  "synposis": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+  "pages": 986,
+  "publisher_id": 112
+}, {
+  "isbn": "378965081-1",
+  "title": "Revenge of the Nerds",
+  "copyright": 2006,
+  "synposis": "Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+  "pages": 319,
+  "publisher_id": 65
+}, {
+  "isbn": "118609023-5",
+  "title": "The Connection",
+  "copyright": 1992,
+  "synposis": "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.",
+  "pages": 771,
+  "publisher_id": 134
+}, {
+  "isbn": "603469870-7",
+  "title": "Innocent, The",
+  "copyright": 2010,
+  "synposis": "Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.",
+  "pages": 704,
+  "publisher_id": 32
+}, {
+  "isbn": "409008474-1",
+  "title": "Kiki",
+  "copyright": 2005,
+  "synposis": "Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.",
+  "pages": 395,
+  "publisher_id": 6
+}, {
+  "isbn": "085682353-8",
+  "title": "Hot Lead and Cold Feet",
+  "copyright": 2006,
+  "synposis": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.",
+  "pages": 809,
+  "publisher_id": 4
+}, {
+  "isbn": "169646866-3",
+  "title": "American Me",
+  "copyright": 2002,
+  "synposis": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+  "pages": 717,
+  "publisher_id": 108
+}, {
+  "isbn": "594126121-7",
+  "title": "Tailor of Panama, The",
+  "copyright": 2009,
+  "synposis": "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
+  "pages": 459,
+  "publisher_id": 22
+}, {
+  "isbn": "421296647-6",
+  "title": "Gone in 60 Seconds",
+  "copyright": 1994,
+  "synposis": "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
+  "pages": 617,
+  "publisher_id": 97
+}, {
+  "isbn": "123830012-X",
+  "title": "Beauty and the Beast (Beauty and the Beasts: A Dark Tale)",
+  "copyright": 1987,
+  "synposis": "Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis.",
+  "pages": 362,
+  "publisher_id": 31
+}, {
+  "isbn": "059116476-0",
+  "title": "Going Hollywood",
+  "copyright": 1989,
+  "synposis": "Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+  "pages": 611,
+  "publisher_id": 176
+}, {
+  "isbn": "217635708-6",
+  "title": "For the Bible Tells Me So",
+  "copyright": 1994,
+  "synposis": "Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
+  "pages": 959,
+  "publisher_id": 35
+}, {
+  "isbn": "878939781-9",
+  "title": "Are You Scared?",
+  "copyright": 1986,
+  "synposis": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+  "pages": 542,
+  "publisher_id": 98
+}, {
+  "isbn": "259977947-2",
+  "title": "Spring Subway",
+  "copyright": 1997,
+  "synposis": "Proin eu mi. Nulla ac enim.",
+  "pages": 279,
+  "publisher_id": 111
+}, {
+  "isbn": "668735057-9",
+  "title": "Tribute",
+  "copyright": 2004,
+  "synposis": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",
+  "pages": 523,
+  "publisher_id": 157
+}, {
+  "isbn": "040269450-3",
+  "title": "Shoes of the Fisherman, The",
+  "copyright": 1996,
+  "synposis": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.",
+  "pages": 736,
+  "publisher_id": 76
+}, {
+  "isbn": "849479637-2",
+  "title": "White Cliffs of Dover, The",
+  "copyright": 1994,
+  "synposis": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "pages": 285,
+  "publisher_id": 32
+}, {
+  "isbn": "151539036-5",
+  "title": "Lahore",
+  "copyright": 1999,
+  "synposis": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.",
+  "pages": 611,
+  "publisher_id": 93
+}, {
+  "isbn": "237536643-3",
+  "title": "Concussion",
+  "copyright": 1999,
+  "synposis": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+  "pages": 849,
+  "publisher_id": 138
+}, {
+  "isbn": "493580902-7",
+  "title": "Running Free",
+  "copyright": 1992,
+  "synposis": "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+  "pages": 470,
+  "publisher_id": 97
+}, {
+  "isbn": "372461635-X",
+  "title": "New in Town",
+  "copyright": 2004,
+  "synposis": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+  "pages": 370,
+  "publisher_id": 175
+}, {
+  "isbn": "924215478-4",
+  "title": "Shalako",
+  "copyright": 2005,
+  "synposis": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "pages": 318,
+  "publisher_id": 2
+}, {
+  "isbn": "247948536-6",
+  "title": "Howl's Moving Castle (Hauru no ugoku shiro)",
+  "copyright": 2007,
+  "synposis": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+  "pages": 767,
+  "publisher_id": 116
+}, {
+  "isbn": "710735769-7",
+  "title": "Mission to Mars",
+  "copyright": 2012,
+  "synposis": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+  "pages": 898,
+  "publisher_id": 36
+}, {
+  "isbn": "376328114-2",
+  "title": "This Island Earth",
+  "copyright": 2001,
+  "synposis": "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+  "pages": 809,
+  "publisher_id": 115
+}, {
+  "isbn": "047483150-7",
+  "title": "Trailer Park Boys: Live at the North Pole",
+  "copyright": 1996,
+  "synposis": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+  "pages": 180,
+  "publisher_id": 141
+}, {
+  "isbn": "641023791-X",
+  "title": "Crockdale",
+  "copyright": 1994,
+  "synposis": "In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+  "pages": 229,
+  "publisher_id": 116
+}, {
+  "isbn": "234711553-7",
+  "title": "Mary, Queen of Scots",
+  "copyright": 2007,
+  "synposis": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",
+  "pages": 637,
+  "publisher_id": 91
+}]

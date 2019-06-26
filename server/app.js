@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 
 const admin = require('./routes/admin');
 const books = require('./routes/books')
-
+const categories = require('./routes/categories')
 
 
 app.use('/admin', admin);
 app.use('/books', books)
-
+app.use('/categories', categories)
 
 // Catch 404 errors
 app.use('*', express.static('./views/404.html'));
