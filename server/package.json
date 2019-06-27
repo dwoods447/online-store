@@ -5,16 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "seed": "node ./seeds"
   },
   "author": "Demaria Woods",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
-    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
     "nodemon": "^1.19.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",

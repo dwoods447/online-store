@@ -2,8 +2,8 @@ module.exports  = {
     port: process.env.PORT || 3000,
     db: {
         development: {
-            username: "postgres",
-            password: "pimpjuice",
+            username: "online-store",
+            password: "online-store",
             database: "online-store",
             host: "localhost",
             dialect: {

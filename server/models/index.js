@@ -19,12 +19,15 @@ const sequelize  = new Sequelize(
 )
 
       // Loop through each file in the current directory excluding index.js and import model into empty db object
-        fs.readdirSync(__dirname).filter((file)=>{
+        fs.readdirSync(__dirname)
+        .filter((file)=>
             file !== 'index.js'
-        }).forEach((file)=>{
-            const currentModel = sequelize.import(path.join(__dirname, file));
-            db[currentModel.name] = currentModel;
-        }) 
+        )
+        .forEach((file) => {
+            const model = sequelize.import(path.join(__dirname, file))
+            db[model.name] = model
+        })
+      
         
         Object.keys(db).forEach((model)=>{
             if('associate' in db[model]) db[model].associate(db);

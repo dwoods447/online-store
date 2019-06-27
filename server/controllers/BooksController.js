@@ -1,4 +1,4 @@
-const { Books } = require('../models/Book');
+const { Book } = require('../models/Book');
 
 module.exports = {
     index (req, res){
