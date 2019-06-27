@@ -1,5 +1,6 @@
 
 
-module.exports = {
-    
+
+module.exports = (sequelize, DataTypes) => {
+        
 }
