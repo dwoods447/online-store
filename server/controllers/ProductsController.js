@@ -1,5 +1,7 @@
 const { Product } = require('../models');
-const {Book} = require('../models');
+const { Book } = require('../models');
+const { Op } = require('sequelize');
+const  { BookAuthor } = require('../models')
 module.exports = {
     // List All Products
     async index (req, res){
@@ -24,9 +26,11 @@ module.exports = {
     store(req, res){
         res.send();
     },
+
+    //List product by id
     async show(req, res){
         try {
-            const product  = await Product.findOne({ 
+            const product  = await Product.findAll({ 
                     where: {id: req.params.productId}, include: [{model : Book, include:[{all: true}]}]
             });
         if(product){
@@ -59,7 +63,6 @@ module.exports = {
     async patch(req, res){
         const productID = req.params.productId;
         try {
-
             if(req.body.price){
                 const updatedProduct = await Product.update({price: req.body.price}, {where:{id: productID}});
             }
@@ -72,7 +75,32 @@ module.exports = {
             })
         }   
     },
+
+
     delete(req, res){
         res.send();
+    },
+
+    async searchProduct(req, res){
+        try {
+            const product  = await Product.findAll({ 
+                    include: [{model : Book, include:[{all:true}], where: {
+                        [Op.or]: ['title','isbn', 'synopsis' ].map(key => ({
+                            [key]: {
+                              [Op.like]: `%${req.params.search}%`
+                            }
+                          }))
+                    }}]
+            });
+                if(product){
+                    res.send({
+                    data:  product
+                    });
+                }   
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }
     }
 }

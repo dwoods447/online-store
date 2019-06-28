@@ -1,12 +1,38 @@
+const { Customer } = require('../models');
+
 module.exports = {
-    index (req, res){
-        res.send();
+    // List all customers
+    async index (req, res){
+        try { 
+            const customers = await Customer.findAll();
+            if(customers){
+                res.send({
+                    data: customers
+                });
+            }
+        } catch (error){
+            res.send({
+                "error": error
+            });
+        }
     },
     create(req, res){
         res.send();
     },
-    store(req, res){
-        res.send();
+    store(req, res){      
+        const customer = await Customer.create(req.body);
+        try {
+            if(customer){
+                res.send({
+                    data: customer
+                });
+            }
+        } catch (error){
+            res.status(500).send({
+                "error": error
+            })
+        }
+       
     },
     show(req, res){
         res.send();

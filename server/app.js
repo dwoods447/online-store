@@ -16,14 +16,16 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 const admin = require('./routes/admin');
-const books = require('./routes/books')
-const categories = require('./routes/categories')
-const products = require('./routes/products')
+const books = require('./routes/books');
+const categories = require('./routes/categories');
+const products = require('./routes/products');
+const authors = require('./routes/authors');
 
 app.use('/admin', admin);
 app.use('/books', books);
 app.use('/categories', categories);
 app.use('/products', products);
+app.use('/authors', authors)
 
 // Catch 404 errors
 app.use('*', express.static('./views/404.html'));
