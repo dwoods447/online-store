@@ -6,7 +6,6 @@ module.exports = {
         const products = await Product.findAll({
             include: [{model : Book, include:[{all: true}]}]
         });
-        console.log(`Books: ${JSON.stringify(products)}`);
         try{
             if(products){
                 res.send({
@@ -25,14 +24,53 @@ module.exports = {
     store(req, res){
         res.send();
     },
-    show(req, res){
-        res.send();
+    async show(req, res){
+        try {
+            const product  = await Product.findOne({ 
+                    where: {id: req.params.productId}, include: [{model : Book, include:[{all: true}]}]
+            });
+        if(product){
+            res.send({
+               data:  product
+            });
+         }     
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }
     },
-    edit(req, res){
-        res.send();
+    async edit(req, res){
+        try {
+            const product  = await Product.findOne({ 
+                    where: {id: req.params.productId}, include: [{model : Book, include:[{all: true}]}]
+            });
+        if(product){
+            res.send({
+               data:  product
+            });
+         }     
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }
     },
-    patch(req, res){
-        res.send();
+    async patch(req, res){
+        const productID = req.params.productId;
+        try {
+
+            if(req.body.price){
+                const updatedProduct = await Product.update({price: req.body.price}, {where:{id: productID}});
+            }
+            if(req.body.qty){
+                const updatedProduct = await Product.update({qty: req.params.qty} ,{where:{id: productID}});
+            }
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }   
     },
     delete(req, res){
         res.send();

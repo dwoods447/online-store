@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         copyright:{
             type: DataTypes.BIGINT
         },
-        synposis:{
+        synopsis:{
             type: DataTypes.TEXT
         },
         pages:{
