@@ -18,7 +18,7 @@ module.exports = {
             })
         }
     },
-
+    // List all book in all categories
     async getAllBookCategories(req, res){
         try {
             const book_cats = await BookCategory.findAll(
@@ -36,7 +36,7 @@ module.exports = {
             })
         }
     },
-
+    // List all books in specific category
     async getBookCategory(req, res){
         const catID = req.params.categoryId;
         console.log(`ID received: ${catID}`);

@@ -2,6 +2,7 @@ const { Author } = require('../models');
 const { BookAuthor } = require('../models');
 const { Book } = require('../models');
 module.exports = {
+    
     async index(req, res){
         const authors = await  Author.findAll();
         try {
@@ -16,6 +17,7 @@ module.exports = {
             })
         }
     },
+
     async show(req, res){
         const authorId = req.params.authorId;
         try {

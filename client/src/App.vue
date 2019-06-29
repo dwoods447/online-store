@@ -1,6 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <h1>Welcome to Your Vue.js App</h1>
+    <app-header></app-header>
+    <router-view></router-view>
   </div>
 </template>
+<script>
+import Header from './Header'
+export default {
+   name:'App',
+   components: {
+     'app-header': Header
+   },
+   data(){
+     return {
+
+     }
+   }
+}
+</script>

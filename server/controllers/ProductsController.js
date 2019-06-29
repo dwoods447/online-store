@@ -1,7 +1,7 @@
 const { Product } = require('../models');
 const { Book } = require('../models');
 const { Op } = require('sequelize');
-const  { BookAuthor } = require('../models')
+// const  { BookAuthor } = require('../models');
 module.exports = {
     // List All Products
     async index (req, res){
@@ -27,7 +27,7 @@ module.exports = {
         res.send();
     },
 
-    //List product by id
+    //Find product by id
     async show(req, res){
         try {
             const product  = await Product.findAll({ 

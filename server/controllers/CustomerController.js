@@ -4,7 +4,9 @@ module.exports = {
     // List all customers
     async index (req, res){
         try { 
-            const customers = await Customer.findAll();
+            const customers = await Customer.findAll({
+                include:[{all:true}]
+            });
             if(customers){
                 res.send({
                     data: customers
@@ -19,7 +21,7 @@ module.exports = {
     create(req, res){
         res.send();
     },
-    store(req, res){      
+    async register(req, res){      
         const customer = await Customer.create(req.body);
         try {
             if(customer){
@@ -34,8 +36,19 @@ module.exports = {
         }
        
     },
-    show(req, res){
-        res.send();
+    async show(req, res){
+        try {
+            const customer = await Customer.findOne({
+                where:{id: req.params.customerId}, include:[{all:true}]
+            })
+            res.send({
+                data : customer
+            });
+        } catch (error){
+            res.status(500).send({
+                "error": error
+            })
+        }
     },
     edit(req, res){
         res.send();
