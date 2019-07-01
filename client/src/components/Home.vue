@@ -55,7 +55,8 @@ export default {
     }
     .card-content{
         width: 250px;
-        height: 380px;
+        height: 480px;
+        padding: 0.5em;
     }
     .card{
         width:250px;

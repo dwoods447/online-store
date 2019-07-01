@@ -2,9 +2,8 @@
     <div>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-                </a>
+             <router-link :to="{name:'home'}" class="navbar-item"><img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"></router-link>
+
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -18,11 +17,9 @@
                     <router-link :to="{name: 'home'}" class="navbar-item">Home</router-link>
              
 
-                <a class="navbar-item">
-                    Browse Categories
-                </a>
+                 <router-link :to="{name: 'book.categories'}" class="navbar-item">Browse Categories</router-link>
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <!-- <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                     More
                     </a>
@@ -42,7 +39,7 @@
                         Report an issue
                     </a>
                     </div>
-                </div>
+                </div> -->
                 </div>
 
                 <div class="navbar-end">

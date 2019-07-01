@@ -2,12 +2,11 @@
     <div>
                 <div class="card-container">
                      <router-link :to="{name: 'product.detail', params: {productId: product.id, product: product }}">
-                        <div class="card">
-                        <div class="card-header"> <p class="card-header-title">{{ product.Book.title  }}</p></div>
-                        
+                        <div class="card">                       
                             <div class="card-content">
                                 <div class="card-image"><img :src="product.Book.image" :alt="product.Book.title"></div>
-                                <div class="card-price"><h3>{{ product.price }}</h3></div>
+                                <p class="card-header-title">{{ product.Book.title  }}</p>
+                                <p class="card-price">${{ product.price }}</p>
                             </div>
                                 <!-- <i class="card-footer-item" href="javascript:void(0);" @click="addProductToCart(product)"><i class="fas fa-shopping-cart"></i></a> -->
                         </div>
