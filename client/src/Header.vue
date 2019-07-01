@@ -15,9 +15,8 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
-                </a>
+                    <router-link :to="{name: 'home'}" class="navbar-item">Home</router-link>
+             
 
                 <a class="navbar-item">
                     Browse Categories
@@ -55,7 +54,8 @@
                     <a class="button is-light">
                         Log in
                     </a>
-                    <a href="#" class="button is-light"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#" class="button is-light"><i class="fas fa-shopping-cart"></i><span style="color:red; padding: 0 5px; vertical-align: top;">{{ this.$store.state.shoppingCartCount }}</span></a>
+                   
                     </div>
                 </div>
                 </div>

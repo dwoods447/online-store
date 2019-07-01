@@ -1,45 +1,64 @@
 <template>
-    <div>
-        <div class="card-container">
-           <div class="card">
-            <div class="card-header"> <p class="card-header-title">Card Title</p></div>
-             <div class="card-content">
-                    Content
-             </div>
-             <footer class="card-footer">
-                <a class="card-footer-item">Save</a>
-                <a class="card-footer-item">Edit</a>
-                <a class="card-footer-item">Delete</a>
-            </footer>
-         </div>
-        </div>
-       
+    <div class="container">
+        <section class="section">
+            <div class="columns">
+                <div class="column is-12">
+                    <paginate name="products" :list="products" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
+                        <div class="columns is-multiline">
+                                <product :product="product" :key="product.id" v-for="product in paginated('products')"></product> 
+                        </div>
+                    </paginate>
+                    <div style="margin: 1em; padding: 1em;">
+                            <div class="paginate-links-container">
+                                <paginate-links for="products" :show-step-links="false"  :limit="3"></paginate-links>
+                            </div><!-- paginate-links-container -->
+                    </div>
+                </div>
+                <!-- <div class="column is-2">
+                    <h2>Shopping Cart</h2>
+                    <cart></cart>
+                </div> -->
+            </div>
+        </section>
     </div>
 </template>
 <script>
-import ProductService from '../services/ProductService'
-
+import Product from './Product'
 export default {
     created(){
         this.getAllProducts();
     },
+    components:{
+        'product':  Product,
+    },
     data: function(){
         return {
-            
+          paginate: ['products'],
         }
     },
     methods: {
-        async getAllProducts(){
-            const products = (await ProductService.index()).data.data;
-            if(products){
-                // Products to sell
-            }
+        getAllProducts(){
+          this.$store.dispatch('getProducts');
+        }
+    },
+    computed:{
+        products(){
+            return this.$store.getters.getAvailableProducts
         }
     }
 }
 </script>
 <style>
     .card-container{
-        max-width: 250px;
+        width: 250px;
+       
+    }
+    .card-content{
+        width: 250px;
+        height: 380px;
+    }
+    .card{
+        width:250px;
+        margin: 0 auto !important;
     }
 </style>

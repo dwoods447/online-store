@@ -52,5 +52,23 @@ module.exports = {
                 "error": error
             })
           }
+    },
+    async findAuthorsByBook(req, res){
+        const bookId = req.params.bookId;
+          try { 
+            const authors = await BookAuthor.findAll({
+                where: {BookId: bookId}, include:[{model: Book}, {model: Author}]
+            })
+            
+            if(authors){
+                res.send({
+                    data: authors
+                })
+            }
+          } catch (error){
+            res.status(500).send({
+                "error": error
+            })
+          }
     }
 }

@@ -60,15 +60,23 @@ module.exports = {
             })
         }
     },
-    async patch(req, res){
+    async decreaseProductQty(req, res){
         const productID = req.params.productId;
         try {
-            if(req.body.price){
-                const updatedProduct = await Product.update({price: req.body.price}, {where:{id: productID}});
-            }
             if(req.body.qty){
-                const updatedProduct = await Product.update({qty: req.params.qty} ,{where:{id: productID}});
-            }
+              const productQty = await Product.findOne({
+                      attributes:['qty'], where: {id: productID}
+               });
+             if(productQty){
+                 const newQty =  productQty.qty - req.body.qty;
+                    const updatedProduct = await Product.update({qty: newQty} ,{where:{id: productID}});
+                    if(updatedProduct){
+                        res.send({
+                            data: updatedProduct
+                        });
+                    }
+             }
+          }
         } catch(error){
             res.send({
                 "error": error
@@ -77,8 +85,28 @@ module.exports = {
     },
 
 
-    delete(req, res){
-        res.send();
+    async increaseProductQty(req, res){
+        const productID = req.params.productId;
+        try {
+            if(req.body.qty){
+              const productQty = await Product.findOne({
+                      attributes:['qty'], where: {id: productID}
+               });
+             if(productQty){
+                 const newQty =  productQty.qty + req.body.qty;
+                    const updatedProduct = await Product.update({qty: newQty} ,{where:{id: productID}});
+                    if(updatedProduct){
+                        res.send({
+                            data: updatedProduct
+                        });
+                    }
+             }
+          }
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }   
     },
 
     async searchProduct(req, res){
