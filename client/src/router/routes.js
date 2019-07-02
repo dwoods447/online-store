@@ -9,7 +9,7 @@ const routes = [
   {path: '/cart', component: ShoppingCart, name: 'cart'},
   {path: '/product/:bookId/detail', component: ProductDetail, name: 'product.detail'},
   {path: '/categories', component: Categories, name: 'book.categories'},
- {path: '/category/:categoryId/detail', component: CategoryDetail, name: 'category.detail'}
+  {path: '/category/:categoryId/detail', component: CategoryDetail, name: 'category.detail'}
  //{path: '/checkout', component: CheckOut, name: 'checkout'}
 
 ]

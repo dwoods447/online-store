@@ -26,14 +26,37 @@ const store = new Vuex.Store({
         increasePurchaseItemQty(state, cartItem){
             cartItem.quantity++;
         },
+        decreasePurchaseItemQty(state, cartItem){
+            cartItem.quantity--;
+        },
+        increaseAvailableQty(state, product){
+            product.qty++;
+        },
         decreaseAvailableQty(state, product){
             product.qty--;
         },
         increaseShoppingCartCount(state){
             state.shoppingCartCount++;
         },
-        removeProductFromShoppingCart(state, product){
-            
+        decreaseShoppingCartCount(state){
+            state.shoppingCartCount--;
+        },
+        removeProductFromShoppingCart(state, productIndex){
+            const product = state.shoppingCart[productIndex];
+            console.log(`Product found ${JSON.stringify(product)}`)
+            if(product.quantity > 0){
+                // Decrease qty
+                console.log('Decreasing purchase qty');
+                
+            } else {
+                console.log('Removing product from cart');
+                state.shoppingCart.splice(productIndex, 1);
+                state.shoppingCartCount--;
+                if(state.shoppingCartCount <= 0){
+                    state.shoppingCartCount = null;
+                }
+            }
+           
         },
       
 
@@ -70,8 +93,18 @@ const store = new Vuex.Store({
         },
       
         removeProductFromShoppingCart(context, product){
-
-        }
+            console.log(`In the store removing...`);
+            const productToDecrease = context.state.shoppingCart.find(cartItem => cartItem.id === product.id);
+            const productIndex = context.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id);
+            console.log(productIndex);
+            if(productIndex != -1){
+                console.log(`Product found in the cart descreasing it at index: ${productIndex}`);
+                context.commit('decreaseShoppingCartCount');
+                context.commit('decreasePurchaseItemQty', productToDecrease);
+                // if you found the product in the cart remove it from shopping cart
+                context.commit('removeProductFromShoppingCart', productIndex)
+            }    
+        }   
     },
     getters: {
         getAvailableProducts(state, getters){

@@ -1,7 +1,9 @@
 <template>
     <div>
-            <div class="card-container" v-for="book in books" :key="book.id">
-                    
+        <div class="columns is-multi-line" v-if="books">
+            <div class="column is-narrow" v-for="book in books" :key="book.id">
+                <router-link :to="{name: 'product.detail', params: {bookId: book.BookId, product: {}}}">
+                    <div class="card-container">
                         <div class="card">                       
                             <div class="card-content">
                                 <div class="card-image"><img :src="book.Book.image" :alt="book.Book.title"></div>
@@ -9,8 +11,14 @@
                             </div>
                                 <!-- <i class="card-footer-item" href="javascript:void(0);" @click="addProductToCart(product)"><i class="fas fa-shopping-cart"></i></a> -->
                         </div>
-                     
                 </div>  
+                </router-link>
+            </div>
+        </div>
+        <div v-if="books.length <= 0">
+            <h2 style="margin: 0 auto; text-align:center;">No books in this category yet...</h2>
+        </div>
+           
     </div>
 </template>
 <script>
@@ -38,6 +46,8 @@ export default {
     }
 }
 </script>
-<style>
-
+<style scoped>
+    .card-container{
+        margin: 0 auto;
+    }
 </style>

@@ -56,7 +56,10 @@
                       <strong>&nbsp;</strong>
                     </div>
                     <div class="panel-block">
-                    <b-button type="is-primary" style="display: block; width: 100%;">Add to Cart</b-button>
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>                  
+                    </div>
+                    <div class="panel-block" v-if="productInCart">
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
                     </div>
             </div>
                
@@ -85,18 +88,38 @@ export default {
     data(){
             return {
                 authors: [],
-                product: {}
+                product: {},
+                productInCart: false,
             }
     },
     methods: {
+         addProductToCart(product){
+            //  console.log(`Product ${JSON.stringify(product)}`);
+            //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)
+            this.productInCart = true;
+            this.$store.dispatch('addProductToShoppingCart', product);
+          
+        },
+
+        removeProductFromCart(product){
+            console.log(`Removing Product: ${JSON.stringify(product)}`);
+             this.$store.dispatch('removeProductFromShoppingCart', product);
+              const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
+                if(itemStillInCart === -1){
+                    console.log(` not in cart anymore`)
+                    this.productInCart = false;
+                }
+
+         },
+
         async getBookAuthors(bookID){
             this.authors = [];
             //const bookID = this.$store.state.route.params.product.Book.id;
-             console.log('Getting Authors with id ' + bookID);
+             // console.log('Getting Authors with id ' + bookID);
             const authors = (await BookService.getBookAuthors(bookID)).data.data
             if(authors){
                 this.authors = authors;
-                console.log(`Authors: ${JSON.stringify(this.authors, null, 2)}`);
+                // console.log(`Authors: ${JSON.stringify(this.authors, null, 2)}`);
                // console.log(`Authors Count = ${this.authors.length}`)
             }
         },
@@ -108,9 +131,9 @@ export default {
             const product = (await ProductService.getProductByBookId(bookID)).data.data[0]
             if(product){
                 this.product = product;
-                console.log('book Id: ' + this.product.Book.id)
+                // console.log('book Id: ' + this.product.Book.id)
                  this.getBookAuthors(this.product.BookId);
-                  console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
+                  // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
                  
             }
         },
