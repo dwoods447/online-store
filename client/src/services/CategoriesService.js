@@ -6,9 +6,10 @@ export default{
         return Api.get(`/categories/all`);
     },
     getAllBookCategories(){
-        return Api.get(`/book/categories`);
+        return Api.get(`/categories/book/categories`);
     },
     getBookCategory(categoryId){
-        return Api.get(`/book/category/${categoryId}`);
-    }
+        return Api.get(`/categories/book/category/${categoryId}`);
+    },
+   
 }

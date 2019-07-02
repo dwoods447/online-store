@@ -108,6 +108,23 @@ module.exports = {
             })
         }   
     },
+    // Find Product by book Id
+    async getProductByBookId(req, res){
+        try {
+            const product =  await Product.findAll({
+                where:{BookId: req.params.bookId}, include:[{model: Book}]
+            })
+            if(product){
+                res.send({
+                    data:  product
+                 });
+            }
+        } catch(error){
+            res.send({
+                "error": error
+            })
+        }
+    },
 
     async searchProduct(req, res){
         try {

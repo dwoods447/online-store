@@ -29,7 +29,7 @@
                                             <li>ISBN: {{ product.Book.isbn}}</li>
                                             <li>Copyright Year: {{ product.Book.copyright }}</li>
                                             <li>Pages: {{ product.Book.pages }}</li>
-                                            <li>Publisher: {{ product.Book.Publisher.name }}</li>
+                                            <!-- <li>Publisher: {{ product.Book.Publisher.name }}</li> -->
                                         </ul>
                                     </div>
                                       <div v-if="product.Book">
@@ -103,8 +103,9 @@ export default {
         async getProduct(){
             this.product = {};
             // console.log('Getting product with id ' + productID)
-            const productID = this.$store.state.route.params.productId;
-            const product = (await ProductService.getProduct(productID)).data.data[0]
+           // const productID = this.$store.state.route.params.productId;
+           const bookID = this.$store.state.route.params.bookId
+            const product = (await ProductService.getProductByBookId(bookID)).data.data[0]
             if(product){
                 this.product = product;
                 console.log('book Id: ' + this.product.Book.id)
@@ -112,7 +113,8 @@ export default {
                   console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
                  
             }
-        }
+        },
+
     }
 }
 </script>

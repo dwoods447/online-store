@@ -7,7 +7,7 @@ import CategoryDetail from '../components/CategoryDetail.vue'
 const routes = [
   {path:'/', component: Home, name:'home'},
   {path: '/cart', component: ShoppingCart, name: 'cart'},
-  {path: '/product/:productId/detail', component: ProductDetail, name: 'product.detail'},
+  {path: '/product/:bookId/detail', component: ProductDetail, name: 'product.detail'},
   {path: '/categories', component: Categories, name: 'book.categories'},
  {path: '/category/:categoryId/detail', component: CategoryDetail, name: 'category.detail'}
  //{path: '/checkout', component: CheckOut, name: 'checkout'}
