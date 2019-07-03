@@ -17,6 +17,9 @@ const store = new Vuex.Store({
         shoppingCartCount: null,
     },
     mutations: {
+        clearAllInCart(state){
+           state.shoppingCart = []; 
+        },
         setProducts(state, products){
             state.products = products
         },
@@ -91,18 +94,22 @@ const store = new Vuex.Store({
               context.commit('decreaseAvailableQty', product)
             }
         },
+
+        clearAllInCart(context){
+            context.commit('clearAllInCart');
+        },
       
         removeProductFromShoppingCart(context, product){
             console.log(`In the store removing...`);
             const productToDecrease = context.state.shoppingCart.find(cartItem => cartItem.id === product.id);
             const productIndex = context.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id);
             console.log(productIndex);
-            if(productIndex != -1){
+            if(productIndex !== -1){
                 console.log(`Product found in the cart descreasing it at index: ${productIndex}`);
                 context.commit('decreaseShoppingCartCount');
                 context.commit('decreasePurchaseItemQty', productToDecrease);
                 // if you found the product in the cart remove it from shopping cart
-                context.commit('removeProductFromShoppingCart', productIndex)
+                context.commit('removeProductFromShoppingCart', productIndex);
             }    
         }   
     },
