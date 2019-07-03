@@ -15,6 +15,7 @@ const store = new Vuex.Store({
         shoppingCart: [],
         products: [],
         shoppingCartCount: null,
+        orderTotal: 0,
     },
     mutations: {
         clearAllInCart(state){
@@ -23,8 +24,8 @@ const store = new Vuex.Store({
         setProducts(state, products){
             state.products = products
         },
-        addProductToShoppingCart(state, productId){
-            state.shoppingCart.push({id: productId, quantity: 1})
+        addProductToShoppingCart(state, product){
+            state.shoppingCart.push({id: product.id, product: product, quantity: 1})
         },
         increasePurchaseItemQty(state, cartItem){
             cartItem.quantity++;
@@ -61,6 +62,10 @@ const store = new Vuex.Store({
             }
            
         },
+
+        calculateCartTotal(state, orderTotal){
+            state.orderTotal = orderTotal;
+        }
       
 
     },
@@ -81,7 +86,7 @@ const store = new Vuex.Store({
                 const cartItem = context.state.shoppingCart.find (item => item.id === product.id);
                 if(!cartItem){
                     // add  product to cart
-                    context.commit('addProductToShoppingCart', product.id);
+                    context.commit('addProductToShoppingCart', product);
                     context.commit('increaseShoppingCartCount');
                     
                    
@@ -99,6 +104,14 @@ const store = new Vuex.Store({
             context.commit('clearAllInCart');
         },
       
+        calculateCartTotal(context){
+            let orderTotal = 0;
+            context.state.shoppingCart.forEach((item)=>{
+                 console.log(orderTotal += parseFloat(item.product.price) * parseInt(item.quantity));
+                 // console.log(`${JSON.stringify(item.product)}`);
+            })
+            context.commit('calculateCartTotal', orderTotal);
+        },
         removeProductFromShoppingCart(context, product){
             console.log(`In the store removing...`);
             const productToDecrease = context.state.shoppingCart.find(cartItem => cartItem.id === product.id);

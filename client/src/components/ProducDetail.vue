@@ -55,7 +55,8 @@
                     <div class="panel-heading">
                       <strong>&nbsp;</strong>
                     </div>
-                    <div class="panel-block">
+                    <div class="panel-block" style="display: block;">
+                        <h1>${{ product.price }} USD</h1>
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>                  
                     </div>
                     <div class="panel-block" v-if="productInCart">
@@ -98,6 +99,7 @@ export default {
             //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)
             this.productInCart = true;
             this.$store.dispatch('addProductToShoppingCart', product);
+             this.$store.dispatch('calculateCartTotal');
           
         },
 

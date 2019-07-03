@@ -1,16 +1,18 @@
 <template>
-        <div class="container-fluid">
+        <div class="container">
+              <section class="section">
                 <div class="columns is-multiline">
                     <div class="column" v-for="category in categories" :key="category.id">
                         <router-link :to="{name: 'category.detail', params: {categoryId: category.id}}">
                             <div class="card-container">    
-                                <div class="card">
-                                        {{ category.name}}
+                                <div>
+                                  {{ category.name }}
                                 </div>
                             </div>
                         </router-link>
                     </div>
                 </div>
+                </section>
         </div>
 </template>
 <script>
@@ -46,8 +48,5 @@ export default {
 }
 </script>
 <style scoped>
-.card{
-    width: 180px;
-    height: 180px;
-}
+
 </style>
