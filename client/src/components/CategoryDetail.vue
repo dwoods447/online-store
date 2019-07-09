@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <div class="columns is-multi-line" v-if="books">
+    <div class="container">
+        <h1 v-if="books.length > 0" style="margin: 0 auto; text-align:center;">{{ books[0].Category.name }}</h1>  
+        <div class="columns is-multi-line" v-if="books.length > 0">
+             
             <div class="column is-narrow" v-for="book in books" :key="book.id">
                 <router-link :to="{name: 'product.detail', params: {bookId: book.BookId, product: {}}}">
                     <div class="card-container">

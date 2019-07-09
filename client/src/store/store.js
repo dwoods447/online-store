@@ -44,6 +44,9 @@ const store = new Vuex.Store({
         },
         decreaseShoppingCartCount(state){
             state.shoppingCartCount--;
+            if(state.shoppingCartCount <= 0){
+                state.orderTotal = 0;
+            }
         },
         removeProductFromShoppingCart(state, productIndex){
             const product = state.shoppingCart[productIndex];
@@ -58,6 +61,7 @@ const store = new Vuex.Store({
                 state.shoppingCartCount--;
                 if(state.shoppingCartCount <= 0){
                     state.shoppingCartCount = null;
+                    state.orderTotal = 0;
                 }
             }
            
