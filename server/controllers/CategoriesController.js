@@ -6,7 +6,9 @@ module.exports = {
     // List all Categories
     async index(req, res){
         try {
-            const categories = await Category.findAll();
+            const categories = await Category.findAll({
+                include:[{all: true}]
+            });
              if(categories){
                 res.send({
                     data: categories

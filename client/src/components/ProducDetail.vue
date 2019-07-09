@@ -18,22 +18,28 @@
                                          <h1 style="font-size: 1.5em;"><strong>{{ product.Book.title}}</strong></h1>
                                     </div>
                                     <div v-if="authors">
-                                        <h1 v-if="authors.length > 1">Authors:</h1>
-                                        <h1 v-if="authors.length == 1">Author:</h1>
-                                        <ul>
-                                            <li v-for="author in authors" :key="author.Author.id">{{ author.Author.first_name }} {{ author.Author.last_name}}</li>
-                                        </ul>
+                                        <div class="columns">
+                                            <div class="column is-1">
+                                                <h1 v-if="authors.length > 1"><strong>Authors:</strong></h1>
+                                                <h1 v-if="authors.length == 1"><strong>Author:</strong></h1>
+                                            </div>
+                                            <div class="column is-11">
+                                                <ul>
+                                                    <li v-for="author in authors" :key="author.Author.id" style="display:inline;">{{ author.Author.first_name }} {{ author.Author.last_name}},&nbsp;</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div>
                                         <ul v-if="product.Book">
-                                            <li>ISBN: {{ product.Book.isbn}}</li>
-                                            <li>Copyright Year: {{ product.Book.copyright }}</li>
-                                            <li>Pages: {{ product.Book.pages }}</li>
-                                            <!-- <li>Publisher: {{ product.Book.Publisher.name }}</li> -->
+                                            <li><strong>ISBN:</strong> {{ product.Book.isbn}}</li>
+                                            <li><strong>Copyright Year: </strong>{{ product.Book.copyright }}</li>
+                                            <li><strong>Pages: </strong>{{ product.Book.pages }}</li>
+                                            <li><strong>Publisher: </strong>{{ product.Book.Publisher.name }}</li>
                                         </ul>
                                     </div>
                                       <div v-if="product.Book">
-                                        <h4>Description:</h4>
+                                        <h4><strong>Description:</strong></h4>
                                         <p>{{product.Book.synopsis }}</p>
                                     </div> 
                                     <div>
@@ -56,11 +62,16 @@
                       <strong>&nbsp;</strong>
                     </div>
                     <div class="panel-block" style="display: block;">
-                        <h1>${{ product.price }} USD</h1>
+                        <h1 style="margin: 0 auto; text-align: center; font-size: 2.4em;">${{ product.price }} USD</h1>
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>                  
                     </div>
                     <div class="panel-block" v-if="productInCart">
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
+                    </div>
+
+                    <div class="panel-block" v-if="this.$store.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id) !== -1">
+                    <router-link :to="{name:'cart'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;">Go to Cart</b-button></router-link>
+                    
                     </div>
             </div>
                
@@ -133,7 +144,7 @@ export default {
             const product = (await ProductService.getProductByBookId(bookID)).data.data[0]
             if(product){
                 this.product = product;
-                // console.log('book Id: ' + this.product.Book.id)
+                 console.log('book Id: ' + JSON.stringify(this.product, null,2));
                  this.getBookAuthors(this.product.BookId);
                   // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
                  

@@ -1,5 +1,6 @@
 const { Product } = require('../models');
 const { Book } = require('../models');
+const { Publisher } = require('../models');
 const { Op } = require('sequelize');
 // const  { BookAuthor } = require('../models');
 module.exports = {
@@ -112,7 +113,7 @@ module.exports = {
     async getProductByBookId(req, res){
         try {
             const product =  await Product.findAll({
-                where:{BookId: req.params.bookId}, include:[{model: Book}]
+                where:{BookId: req.params.bookId}, include:[{model: Book, include:[{model: Publisher}]}]
             })
             if(product){
                 res.send({
