@@ -65,7 +65,7 @@
                         <h1 style="margin: 0 auto; text-align: center; font-size: 2.4em;">${{ product.price }} USD</h1>
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>                  
                     </div>
-                    <div class="panel-block" v-if="productInCart">
+                    <div class="panel-block" v-if="this.$store.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id) !== -1">
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
                     </div>
 
@@ -111,12 +111,15 @@ export default {
             this.productInCart = true;
             this.$store.dispatch('addProductToShoppingCart', product);
              this.$store.dispatch('calculateCartTotal');
+             this.$store.dispatch('calculateTotalCartItems');
           
         },
 
         removeProductFromCart(product){
             console.log(`Removing Product: ${JSON.stringify(product)}`);
              this.$store.dispatch('removeProductFromShoppingCart', product);
+             this.$store.dispatch('calculateCartTotal');
+             this.$store.dispatch('calculateTotalCartItems');
               const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
                 if(itemStillInCart === -1){
                     console.log(` not in cart anymore`)

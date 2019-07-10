@@ -69,6 +69,12 @@ const store = new Vuex.Store({
 
         calculateCartTotal(state, orderTotal){
             state.orderTotal = orderTotal;
+        },
+        calculateTotalCartItems(state, total){
+            state.shoppingCartCount = total;
+            if(state.shoppingCartCount <= 0){
+                state.shoppingCartCount = null;
+            }
         }
       
 
@@ -115,6 +121,13 @@ const store = new Vuex.Store({
                  // console.log(`${JSON.stringify(item.product)}`);
             })
             context.commit('calculateCartTotal', orderTotal);
+        },
+        calculateTotalCartItems(context){
+            let totalItems = 0;
+            context.state.shoppingCart.forEach((item)=>{
+                totalItems += 1
+           })
+           context.commit('calculateTotalCartItems', totalItems);
         },
         removeProductFromShoppingCart(context, product){
             console.log(`In the store removing...`);

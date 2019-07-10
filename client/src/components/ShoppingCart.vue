@@ -78,6 +78,7 @@ export default {
              console.log(`Removing Product: ${JSON.stringify(product.product)}`);
              this.$store.dispatch('removeProductFromShoppingCart', product.product);
               this.$store.dispatch('calculateCartTotal');
+              this.$store.dispatch('calculateTotalCartItems');
               const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
                 if(itemStillInCart === -1){
                     // Item has been removed from the cart
