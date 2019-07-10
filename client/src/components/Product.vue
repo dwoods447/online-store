@@ -6,7 +6,7 @@
                             <div class="card-content">
                                 <div class="card-image"><img :src="product.Book.image" :alt="product.Book.title"></div>
                                 <p class="card-header-title">{{ product.Book.title  }}</p>
-                                <p class="card-price">${{ product.price }}</p>
+                                <p class="card-price"><b-tag type="is-warning" style="font-size: 1.2em;">${{ product.price }}</b-tag></p>
                             </div>
                                 <!-- <i class="card-footer-item" href="javascript:void(0);" @click="addProductToCart(product)"><i class="fas fa-shopping-cart"></i></a> -->
                         </div>
