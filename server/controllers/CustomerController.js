@@ -1,5 +1,6 @@
 const { Customer } = require('../models');
-
+const  bcrypt = require('bcryptjs');
+module.exports.bcrypt = bcrypt;
 module.exports = {
     // List all customers
     async index (req, res){
@@ -22,18 +23,41 @@ module.exports = {
         res.send();
     },
     async register(req, res){      
-        const customer = await Customer.create(req.body);
-        try {
-            if(customer){
+        const newCustomerEmail = req.body.email;
+        const emailExist = await Customer.findOne({
+            where: {email: newCustomerEmail}
+        })
+        if(emailExist){
+            res.send({
+                'error': 'This account already exists. Please Login in.'
+            });
+        } else {
+            try {
+                const salt  = bcrypt.genSaltSync(8);
+                const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+                        customer = await Customer.create({
+                        first_name: req.body.first_name,
+                        last_name: req.body.last_name,
+                        phone: req.body.phone,
+                        address: req.body.address,
+                        city: req.body.city,
+                        country: req.body.country,
+                        email: req.body.email,
+                        password: hashedPassword,
+                 });
+                if(customer){
+                    res.send({
+                        data: customer
+                    });
+                }
+            } catch (error){
                 res.send({
-                    data: customer
-                });
+                    "error": error
+                })
             }
-        } catch (error){
-            res.status(500).send({
-                "error": error
-            })
         }
+         
+        
        
     },
     async show(req, res){

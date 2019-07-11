@@ -11,6 +11,7 @@
   "author": "Demaria Woods",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.5",
     "body-parser": "^1.19.0",
     "connect-session-sequelize": "^6.0.0",

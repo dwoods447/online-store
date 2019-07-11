@@ -37,9 +37,9 @@
                         <b-input v-model="formdata.confirm_password" v-validate="{required: true, confirmed:formdata.password}" name="password_confirmation" type="password"></b-input>
                     </b-field>
                     <span>{{ errors.first('password') }}</span>
-
-
-                 <b-button type="is-primary" @click="signup">Sign Up</b-button>
+                    <span v-if="message">{{ message}}</span>
+                    <router-link :to="{name: 'login'}" style="text-decoration:none;" v-if="message"><b-button>Login</b-button></router-link>
+                    <b-button type="is-primary" @click="signup" v-if="!message">Sign Up</b-button>
              </form>        
         </section>
     </div>
@@ -49,7 +49,7 @@ import SignUpService from '../services/SignUpService'
 export default {
     data(){
         return {
-           
+            message: '',
             formdata: {
                 first_name: '',
                 last_name: '',
@@ -76,10 +76,19 @@ export default {
         },
 
         async submitInfo(){
-            const registration = await SignUpService.signUp(this.formdata);
-            if(registration){
-                this.$router.push({name: 'login'})
+            try {
+              const registration = (await SignUpService.signUp(this.formdata)).data;
+              console.log(`Registration: ${JSON.stringify(registration)}`)
+              if(registration.error){
+                this.message = registration.error;
+              } else {
+                  // Registration successful
+                   this.$router.push({name: 'login'})
+              }
+            } catch (error){
+                console.log(`An error occurred: ${JSON.stringify(error)}`);
             }
+            
         }
     }
 }

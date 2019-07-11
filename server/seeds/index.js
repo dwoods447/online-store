@@ -2,8 +2,8 @@
 const { sequelize } = require('../models');
 //Bring in BlueBird
 const Promise = require('bluebird');
-
-
+//Bring in Bcrypt to hash passwords
+const  bcrypt = require('bcryptjs');
 // Bring in models
 const { Author } = require('../models');
 const { Book } = require('../models');
@@ -28,57 +28,68 @@ const book_categories = require('./book_categories.json')
         .then(async function(){
 
             await Promise.all(
-                authors.map(authors => {
-                    Author.create(authors)
+                authors.map(author => {
+                    Author.create(author)
                 })
             )
             
             await Promise.all(
-                categories.map(categories => {
-                    Category.create(categories)
+                categories.map(category => {
+                    Category.create(category)
                 })
             )
 
             await Promise.all(
-                customers.map(customers => {
-                    Customer.create(customers)
+                customers.map(customer => {
+                    const salt  = bcrypt.genSaltSync(8);
+                    const hashedPassword = bcrypt.hashSync(customer.password, salt);
+                    Customer.create({
+                        first_name: customer.first_name,
+                        last_name: customer.last_name,
+                        phone: customer.phone,
+                        address: customer.address,
+                        city: customer.city,
+                        country: customer.country,
+                        email: customer.email,
+                        password: hashedPassword
+                    })
                 })
             )
 
             await Promise.all(
-                publishers.map(publishers => {
-                    Publisher.create(publishers)
+                publishers.map(publisher => {
+                    Publisher.create(publisher)
                 })
             )
 
             await Promise.all(
-                books.map(books => {
-                    Book.create(books)
+                books.map(book => {
+                    Book.create(book)
+                })
+            )
+
+            // await Promise.all(
+            //     books.map(book => {
+            //         Book.create(book)
+            //     })
+            // )
+
+            await Promise.all(
+                products.map(product => {
+                    Product.create(product)
+                })
+            )
+
+
+            await Promise.all(
+                book_authors.map(book_author => {
+                    BookAuthor.create(book_author)
                 })
             )
 
             await Promise.all(
-                books.map(books => {
-                    Book.create(books)
-                })
-            )
-
-            await Promise.all(
-                products.map(products => {
-                    Product.create(products)
-                })
-            )
-
-
-            await Promise.all(
-                book_authors.map(book_authors => {
-                    BookAuthor.create(book_authors)
-                })
-            )
-
-            await Promise.all(
-                book_categories.map(book_categories => {
-                    BookCategory.create(book_categories)
+                book_categories.map(book_category => {
+                    BookCategory.create(book_category)
                 })
             )
 

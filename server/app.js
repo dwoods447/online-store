@@ -24,7 +24,7 @@ const categories = require('./routes/categories');
 const products = require('./routes/products');
 const authors = require('./routes/authors');
 const customers = require('./routes/customers');
-
+const authentication = require('./routes/authentication')
 
 app.use('/admin', admin);
 app.use('/books', books);
@@ -32,6 +32,10 @@ app.use('/categories', categories);
 app.use('/products', products);
 app.use('/authors', authors);
 app.use('/customers', customers);
+app.use('/auth', authentication)
+
+
+
 app.use(session({
     secret: 'keyboard cat',
     store: new SequelizeStore({
