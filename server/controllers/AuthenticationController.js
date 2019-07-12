@@ -1,5 +1,5 @@
 const { Customer } = require('../models');
-
+const bcrypt = require('../app').bcrypt
 
 module.exports = {
     async login(req, res){
@@ -13,14 +13,19 @@ module.exports = {
                 'error': 'Invalid email or password'
             });
         } else {
+            console.log(`Customer Password: ${customer.password}`)
             try{
-              const isValidPassword = password === customer.password;
-              if(!isValidPassword){
+              const passwordMatch = await bcrypt.compare(password, customer.password);
+              if(!passwordMatch){
                 res.status(403).send({
                   'error': 'Invalid email and/or password'         
                 })
               } else {
                   const customerJSON = customer.toJSON();
+                   req.session.isLoggedIn = true;
+                   req.session.customer = customer;
+                  console.log(req.session);
+                
                 res.send({
                     data: customerJSON,
                 })
@@ -33,7 +38,7 @@ module.exports = {
         }
     },
     async logout(req, res){
-        
+        req.session.isLoggedIn = false;
         res.send();
     }
 }
