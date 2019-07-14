@@ -24,9 +24,11 @@
 </template>
 <script>
 import Product from './Product'
+import ProductService from '../services/ProductService'
+// import store from '../store/store'
 export default {
     created(){
-        this.getAllProducts();
+        this.getProducts();
     },
     components:{
         'product':  Product,
@@ -37,9 +39,14 @@ export default {
         }
     },
     methods: {
-        getAllProducts(){
-          this.$store.dispatch('getProducts');
-        }
+       async getProducts(context){
+            const products = (await ProductService.index()).data.data;
+            if(products){
+                // update products for all components
+                this.$store.dispatch('setStoreProducts', products)
+            }
+        },
+
     },
     computed:{
         products(){

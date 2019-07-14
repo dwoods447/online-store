@@ -46,7 +46,14 @@
 </template>
 <script>
 import SignUpService from '../services/SignUpService'
+import AuthenticationService from '../services/AuthenticationService'
 export default {
+    created(){
+         this.getCSRFToken();
+    },
+    mounted() {
+
+    },
     data(){
         return {
             message: '',
@@ -68,15 +75,26 @@ export default {
             this.$validator.validate().then(valid => {
                 if (!valid) {
                 // do stuff if not valid.
-                } else {
+                } else {  
                      this.submitInfo();   
                 }
              });
            
         },
 
+        async getCSRFToken(context){
+            const token = (await AuthenticationService.csrfToken()).data.csrfToken;
+            console.log(`Token recieved: ${JSON.stringify(token)}`);
+            if(token){
+                console.log(`Setting CSRF token: ${token}`);  
+                this.$store.dispatch('setStoreCSRFtoken', token);
+                this.formdata._csrf = token;
+            }
+        },
+
         async submitInfo(){
             try {
+              console.log(`Sending data: ${JSON.stringify(this.formdata)}`)  
               const registration = (await SignUpService.signUp(this.formdata)).data;
               console.log(`Registration: ${JSON.stringify(registration)}`)
               if(registration.error){
@@ -89,7 +107,10 @@ export default {
                 console.log(`An error occurred: ${JSON.stringify(error)}`);
             }
             
-        }
+        },
+        
+    },
+    computed: {
     }
 }
 </script>

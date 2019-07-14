@@ -21,11 +21,9 @@ module.exports = {
                   'error': 'Invalid email and/or password'         
                 })
               } else {
-                  const customerJSON = customer.toJSON();
-                   req.session.isLoggedIn = true;
-                   req.session.customer = customer;
-                  console.log(req.session);
-                
+                const customerJSON = customer.toJSON();
+                req.session.isLoggedIn = true;
+                req.session.customer = customer;
                 res.send({
                     data: customerJSON,
                 })

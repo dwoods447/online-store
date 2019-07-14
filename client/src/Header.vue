@@ -18,8 +18,9 @@
                 <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                    <router-link :to="{name: 'signup'}" class="button is-primary">Sign up</router-link>
-                    <router-link :to="{name: 'login'}" class="button is-light">Login</router-link>
+                    <router-link :to="{name: 'signup'}" class="button is-primary" v-if="!isLoggedIn">Sign up</router-link>
+                    <router-link :to="{name: 'login'}" class="button is-light" v-if="!isLoggedIn">Login</router-link>
+                    <button @click="logout" class="button is-light" v-if="isLoggedIn">Logout</button>
                     <router-link :to="{name:'cart'}" class="button is-light"><i class="fas fa-shopping-cart"></i><span style="color:red; padding: 0 5px; vertical-align: top;">{{ this.$store.state.shoppingCartCount }}</span></router-link>                  
                     </div>
                 </div>
@@ -29,10 +30,24 @@
     </div>
 </template>
 <script>
+import AuthenticationService from './services/AuthenticationService'
 export default {
     data(){
         return {
 
+        }
+    },
+    methods: {
+        async logout(){
+            this.$store.dispatch('setLogOut');
+            AuthenticationService.logout();
+            this.$router.push({name: 'login'});
+            this.$store.dispatch('setCurrentLoggedInCustomer', null);
+        }
+    },
+    computed:{
+        isLoggedIn(){
+            return this.$store.getters.isLoggedIn
         }
     }
 }

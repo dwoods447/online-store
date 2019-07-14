@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import ProductService from '../services/ProductService'
+// import AuthenticationService from '../services/AuthenticationService'
 import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex);
 
@@ -16,8 +16,17 @@ const store = new Vuex.Store({
         products: [],
         shoppingCartCount: null,
         orderTotal: 0,
+        csrfToken: null,
+        isLoggedIn: null,
+        customer: null,
     },
     mutations: {
+        setLogOut(state){
+            state.isLoggedIn = null;
+        },
+        setLogin(state){
+            state.isLoggedIn = true;
+        },
         clearAllInCart(state){
            state.shoppingCart = []; 
         },
@@ -48,6 +57,9 @@ const store = new Vuex.Store({
                 state.orderTotal = 0;
             }
         },
+        setCSRFToken(state, token){
+            state.csrfToken = token;
+        },
         removeProductFromShoppingCart(state, productIndex){
             const product = state.shoppingCart[productIndex];
             console.log(`Product found ${JSON.stringify(product)}`)
@@ -66,7 +78,9 @@ const store = new Vuex.Store({
             }
            
         },
-
+        setCurrentLoggedInCustomer(state, customer){
+            state.customer = customer;
+        },
         calculateCartTotal(state, orderTotal){
             state.orderTotal = orderTotal;
         },
@@ -80,14 +94,22 @@ const store = new Vuex.Store({
 
     },
     actions: {
-        async getProducts(context){
-            const products = (await ProductService.index()).data.data;
-            if(products){
-                // update products for all components
-                context.commit('setProducts', products)
-            }
+        setLogOut(context){
+            context.commit('setLogOut');
+        },
+        setLogIn(context){
+            context.commit('setLogin');
+        },
+        setCurrentLoggedInCustomer(context, customer){
+            context.commit('setCurrentLoggedInCustomer', customer);
+        },
+        setStoreProducts(context, products){
+            context.commit('setProducts', products)
         },
 
+        setStoreCSRFtoken(context, token){
+            context.commit('setCSRFToken', token);
+        },
         addProductToShoppingCart(context, product){
             // Make sure the product is in stock
             // if the product qty is greater than 0 check to see if it is already in the cart
@@ -146,9 +168,21 @@ const store = new Vuex.Store({
     getters: {
         getAvailableProducts(state, getters){
             return state.products.filter(product => product.qty > 0)
+        },
+        getShoppingCartCount(state, getters){
+            return state.shoppingCartCount;
+        },
+        getOrderTotal(state, getters){
+            return state.orderTotal;
+        },
+        getToken(state, getters){
+          return state.csrfToken;       
+        },
+        isLoggedIn(state, getters){
+            return state.isLoggedIn;
         }
     }
 });
 
 
-export default store;
+export default store

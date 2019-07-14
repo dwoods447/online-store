@@ -63,7 +63,8 @@
                     </div>
                     <div class="panel-block" style="display: block;">
                         <h1 style="margin: 0 auto; text-align: center; font-size: 2.4em;">${{ product.price }} USD</h1>
-                    <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>                  
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)" v-if="this.$store.getters.isLoggedIn">Add to Cart</b-button>
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="goToLogin()" v-if="!this.$store.getters.isLoggedIn">Please Login to Add To Cart</b-button>                  
                     </div>
                     <div class="panel-block" v-if="this.$store.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id) !== -1">
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
@@ -105,6 +106,9 @@ export default {
             }
     },
     methods: {
+        goToLogin(){
+            this.$router.push({name: 'login'})
+        },
          addProductToCart(product){
             //  console.log(`Product ${JSON.stringify(product)}`);
             //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)

@@ -1,4 +1,5 @@
 const { Customer } = require('../models');
+
 const  bcrypt = require('bcryptjs');
 module.exports.bcrypt = bcrypt;
 module.exports = {

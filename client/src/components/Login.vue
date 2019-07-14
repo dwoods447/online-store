@@ -14,10 +14,17 @@
                             </b-field>
                              <span>{{ errors.first('email') }}</span>
                              <b-field label="Password">
-                                <b-input v-model="formData.password" v-validate="{required: true}" name="password"></b-input>
+                                <b-input v-model="formData.password" v-validate="{required: true}" name="password" type="password"></b-input>
                             </b-field>
                              <span>{{ errors.first('password') }}</span>
-                           <b-button type="is-info" @click="attemptLogin">Login</b-button>
+                             <div class="columns">
+                                 <div class="column is-2">
+                                       <b-button type="is-info" @click="attemptLogin">Login</b-button>
+                                 </div>
+                                  <div class="column is-10">
+                                    <p>Don't have and Account. Please sign up <router-link :to="{name: 'signup'}">here</router-link></p>
+                                  </div>
+                             </div>
                         </form>
                     </div>
                 </div>
@@ -26,6 +33,7 @@
     </div>
 </template>
 <script>
+import AuthenticationService from '../services/AuthenticationService'
 export default {
     data(){
         return {
@@ -51,8 +59,11 @@ export default {
                     email: this.formData.email,
                     password: this.formData.password
                 });
+                console.log(`Login Response: ${JSON.stringify(loginSuccess)}`);
                 if(loginSuccess){
-                    this.$router.push({name: 'home'})
+                    this.$router.push({name: 'cart'});
+                    this.$store.dispatch('setLogIn');
+                    this.$store.dispatch('setCurrentLoggedInCustomer', loginSuccess.data.data);
                 }
             } catch(error){
                 console.log(error)

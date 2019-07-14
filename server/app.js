@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('./config/config');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const morgan  = require('morgan');
 const cors = require('cors');
 const {sequelize} = require('./models');
@@ -13,7 +14,7 @@ module.exports.bcrypt = bcrypt;
 const app = express();
 const port = config.port;
 
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(cors());
@@ -24,9 +25,8 @@ const categories = require('./routes/categories');
 const products = require('./routes/products');
 const authors = require('./routes/authors');
 const customers = require('./routes/customers');
-const authentication = require('./routes/authentication')
-
-
+const authentication = require('./routes/authentication');
+// const csrf = require('./routes/csrf');
 
 
 app.use(session({
@@ -35,8 +35,11 @@ app.use(session({
     db: sequelize
   }),
   resave: false, // we support the touch method so per the express-session docs this should be set to false
-  proxy: true // if you do SSL outside of node.
+  proxy: true, // if you do SSL outside of node.
+  saveUninitialized: false
 }))
+
+
 
 app.use('/admin', admin);
 app.use('/books', books);
@@ -45,7 +48,7 @@ app.use('/products', products);
 app.use('/authors', authors);
 app.use('/customers', customers);
 app.use('/auth', authentication)
-
+// app.use('/csrf', csrf)
 
 
 

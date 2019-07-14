@@ -6,6 +6,8 @@ import Categories from '../components/Categories.vue'
 import CategoryDetail from '../components/CategoryDetail.vue'
 import SignUp from '../components/SignUp.vue'
 import Login from '../components/Login.vue'
+// import store from '../store/store'
+
 const routes = [
   {path:'/', component: Home, name:'home'},
   {path: '/cart', component: ShoppingCart, name: 'cart'},
