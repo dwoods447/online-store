@@ -134,13 +134,9 @@ export default {
 
         async getBookAuthors(bookID){
             this.authors = [];
-            //const bookID = this.$store.state.route.params.product.Book.id;
-             // console.log('Getting Authors with id ' + bookID);
             const authors = (await BookService.getBookAuthors(bookID)).data.data
             if(authors){
                 this.authors = authors;
-                // console.log(`Authors: ${JSON.stringify(this.authors, null, 2)}`);
-               // console.log(`Authors Count = ${this.authors.length}`)
             }
         },
         async getProduct(){
