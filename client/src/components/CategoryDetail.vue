@@ -38,11 +38,11 @@ export default {
     methods:{
         async getBookCategories(){
             const categoryId = this.$store.state.route.params.categoryId;
-            console.log(`Getting Books in cat: ${categoryId}`);
+            // console.log(`Getting Books in cat: ${categoryId}`);
             const books = (await CategoriesService.getBookCategory(categoryId)).data.data;
             if(books){
                 this.books = books;
-                console.log(`Books returned: ${JSON.stringify(books, null, 2)}`)
+               // console.log(`Books returned: ${JSON.stringify(books, null, 2)}`)
             }
         }
     }

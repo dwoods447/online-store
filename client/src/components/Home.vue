@@ -3,7 +3,7 @@
         <section class="section">
             <div class="columns">
                 <div class="column is-12">
-                    <paginate name="products" :list="products" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
+                    <paginate name="products" :list="prods" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
                         <div class="columns is-multiline">
                                 <product :product="product" :key="product.id" v-for="product in paginated('products')"></product> 
                         </div>
@@ -24,6 +24,7 @@
 </template>
 <script>
 import Product from './Product'
+import { createNamespacedHelpers } from 'vuex'
 import ProductService from '../services/ProductService'
 import { mapState } from  'vuex'
 import { mapGetters } from  'vuex'
@@ -38,14 +39,15 @@ export default {
     data: function(){
         return {
           paginate: ['products'],
+          prods: [],
         }
     },
     methods: {
        async getProducts(context){
             const products = (await ProductService.index()).data.data;
             if(products){
-                // update products for all components
-                this.$store.dispatch("products/setStoreProducts", products)
+                this.prods = products;
+                this.$store.dispatch("setStoreProducts", products);
             }
         },
 
@@ -56,13 +58,10 @@ export default {
         // },
 
         ...mapGetters({
-            products: 'products/getAvailableProducts'
+             // products: 'products/getAvailableProducts'
         }),
-        ...mapState([
-            
-        ]),
          ...mapActions([
-             'products/setStoreProducts'
+             'setStoreProducts'
          ])
     }
 }

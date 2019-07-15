@@ -11,7 +11,9 @@ export default {
     mutations: {
         
          clearAllInCart(state){
-            state.shoppingCart = []; 
+            state.shoppingCartCount = null;
+            state.shoppingCart = [];
+            state.orderTotal = 0;
          },
         addProductToShoppingCart(state, product){
             state.shoppingCart.push({id: product.id, product: product, quantity: 1})
@@ -128,8 +130,11 @@ export default {
         getOrderTotal(state, getters){
             return state.orderTotal;
         },
-        searchShoppingCart(state, productID){
-            return state.shoppingCart.findIndex(cartItem => cartItem.id === productID) !== -1
+        getShoppingCart(state, getters, rootState, productID){
+            return state.shoppingCart;
+        },
+        searchShoppingCart: (state) => (id) => {
+            return (state.shoppingCart.findIndex(cartItem => cartItem.id === id) !== -1)
         }
     }
 }

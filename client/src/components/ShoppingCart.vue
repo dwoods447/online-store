@@ -3,10 +3,10 @@
         <h1>My Cart</h1>
         <div class="columns">
             <div class="column is-9">
-                <div class="panel-heading"><strong>Your Items - ({{ this.$store.state.shoppingCartCount }})</strong></div>
+                <div class="panel-heading"><strong>Your Items - ({{ count }})</strong></div>
                     <div class="panel-block" style="display: block;">
                         <div v-if="!emptyCart">
-                        <div v-for="product in this.$store.state.shoppingCart" :key="product.id" >
+                        <div v-for="product in products" :key="product.id" >
                             <div class="columns">
                                 <div class="column is-6">
                                     <div class="columns">
@@ -42,23 +42,33 @@
                     </div>
                     <div class="panel-block" style="display: block;">
                         <ul>
-                            <li>Order Total: &nbsp;&nbsp;{{ this.$store.state.orderTotal.toFixed(2) }}</li>
+                            <li>Order Total: &nbsp;&nbsp;{{ orderTotal.toFixed(2) }}</li>
                         </ul>
                         <hr>
                          <ul>
-                            <li>Subtotal: &nbsp;&nbsp;{{ this.$store.state.orderTotal.toFixed(2) }}</li>
+                            <li>Subtotal: &nbsp;&nbsp;{{ orderTotal.toFixed(2) }}</li>
                         </ul>
                         <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
                         Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. <br/>
                         Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. -->
                     </div>
                 </div>
+                 <div style="margin: 0em; padding: 0;" v-if="this.$store.state.isLoggedIn">
+                        <b-button type="is-primary" style="display: block; width: 100%;" @click="goToCheckout()">Checkout</b-button>
+                </div>
+                <div style="margin: 0em; padding: 0;" v-if="!this.$store.state.isLoggedIn">
+                       <b-button type="is-primary" style="display: block; width: 100%;" @click="goToLogin()">Please Login to Checkout</b-button> 
+                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
 import ProductService from '../services/ProductService'
+import { mapState, createNamespacedHelpers } from  'vuex'
+import { mapActions } from  'vuex'
+// import { mapGetters } from  'vuex'
+const { mapGetters } = createNamespacedHelpers('cart');
 export default {
     name: 'cart',
     created(){
@@ -66,9 +76,6 @@ export default {
     },
     data(){
         return {
-            products: [],
-            orderTotal: 0,
-            subTotal: 0,
             productInCart: true,
             emptyCart: false,
         }
@@ -76,21 +83,40 @@ export default {
     methods:{
         removeCartItem(product){
              console.log(`Removing Product: ${JSON.stringify(product.product)}`);
-             this.$store.dispatch('removeProductFromShoppingCart', product.product);
-              this.$store.dispatch('calculateCartTotal');
-              this.$store.dispatch('calculateTotalCartItems');
-              const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
+             this.$store.dispatch('cart/removeProductFromShoppingCart', product.product);
+              this.$store.dispatch('cart/calculateCartTotal');
+              this.$store.dispatch('cart/calculateTotalCartItems');
+              const itemStillInCart = this.searchShoppingCart(product.id);
                 if(itemStillInCart === -1){
                     // Item has been removed from the cart
                 } else {
                   // Decreasing item qty
                 }
+        },
+        goToLogin(){
+            this.$router.push({name: 'login'})
+        },
+        goToCheckout(){
+            this.$router.push({name: 'checkout'})
         }
     
     },
 
     computed: {
-
+        ...mapState([
+            'cart',
+        ]),
+        ...mapActions([
+            'cart/removeProductFromShoppingCart',
+            'cart/calculateCartTotal',
+            'cart/calculateTotalCartItems'
+        ]),
+        ...mapGetters({
+            products: 'getShoppingCart',
+            count: 'getShoppingCartCount',
+            orderTotal: 'getOrderTotal',
+            searchShoppingCart: 'searchShoppingCart'
+        })
     }
 
    

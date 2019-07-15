@@ -65,8 +65,8 @@ export default {
                 console.log(`Login Response: ${JSON.stringify(loginSuccess)}`);
                 if(loginSuccess){
                     this.$router.push({name: 'cart'});
-                    this.$store.dispatch('authentication/setLogIn');
-                    this.$store.dispatch('authentication/setCurrentLoggedInCustomer', loginSuccess.data.data);
+                    this.$store.dispatch('setLogIn');
+                    this.$store.dispatch('setCurrentLoggedInCustomer', loginSuccess.data.data);
                 }
             } catch(error){
                 console.log(error)
@@ -76,14 +76,11 @@ export default {
     },
     computed: {
         ...mapGetters({
-            products: 'products/getAvailableProducts'
-        }),
-        ...mapState([
            
-        ]),
-         ...mapActions([
-             'authentication/setLogIn',
-             'authentication/setCurrentLoggedInCustomer'
+        }),
+        ...mapActions([
+             'setLogIn',
+             'setCurrentLoggedInCustomer'
         ])
     }
 }

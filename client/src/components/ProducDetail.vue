@@ -63,16 +63,15 @@
                     </div>
                     <div class="panel-block" style="display: block;">
                         <h1 style="margin: 0 auto; text-align: center; font-size: 2.4em;">${{ product.price }} USD</h1>
-                    <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)" v-if="this.$store.getters.isLoggedIn">Add to Cart</b-button>
-                    <b-button type="is-primary" style="display: block; width: 100%;" @click="goToLogin()" v-if="!this.$store.getters.isLoggedIn">Please Login to Add To Cart</b-button>                  
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)">Add to Cart</b-button>
+                    <!-- <b-button type="is-primary" style="display: block; width: 100%;" @click="goToLogin()" v-if="!this.$store.state.isLoggedIn">Please Login to Add To Cart</b-button>                   -->
                     </div>
-                    <div class="panel-block" v-if="this.$store.getters.searchShopping(product)">
-                    <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
+                    <div class="panel-block" v-if="this.searchShoppingCart(product.id)">
+                    <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)" >Remove from Cart</b-button>
                     </div>
 
-                    <div class="panel-block" v-if="this.$store.getters.searchShopping(product)">
-                    <router-link :to="{name:'cart'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;">Go to Cart</b-button></router-link>
-                    
+                    <div class="panel-block" v-if="this.searchShoppingCart(product.id)">
+                    <router-link :to="{name:'cart'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;" >Go to Cart</b-button></router-link>
                     </div>
             </div>
                
@@ -88,8 +87,9 @@ import BookService from '../services/BookService'
 import ProductService from '../services/ProductService'
 import { mapState } from  'vuex'
 import { mapActions} from  'vuex'
-import { mapGetters } from  'vuex'
-
+// import { mapGetters } from  'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('cart')
 export default {
     //  components:{
     //     'product':  Product,
@@ -116,17 +116,17 @@ export default {
             //  console.log(`Product ${JSON.stringify(product)}`);
             //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)
             this.productInCart = true;
-            this.$store.dispatch('addProductToShoppingCart', product);
-             this.$store.dispatch('calculateCartTotal');
-             this.$store.dispatch('calculateTotalCartItems');
+            this.$store.dispatch('cart/addProductToShoppingCart', product);
+             this.$store.dispatch('cart/calculateCartTotal');
+             this.$store.dispatch('cart/calculateTotalCartItems');
           
         },
 
         removeProductFromCart(product){
             console.log(`Removing Product: ${JSON.stringify(product)}`);
-             this.$store.dispatch('removeProductFromShoppingCart', product);
-             this.$store.dispatch('calculateCartTotal');
-             this.$store.dispatch('calculateTotalCartItems');
+             this.$store.dispatch('cart/removeProductFromShoppingCart', product);
+             this.$store.dispatch('cart/calculateCartTotal');
+             this.$store.dispatch('cart/calculateTotalCartItems');
               const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
                 if(itemStillInCart === -1){
                     console.log(` not in cart anymore`)
@@ -150,7 +150,7 @@ export default {
             const product = (await ProductService.getProductByBookId(bookID)).data.data[0]
             if(product){
                 this.product = product;
-                 console.log('book Id: ' + JSON.stringify(this.product, null,2));
+                 // console.log('book Id: ' + JSON.stringify(this.product, null,2));
                  this.getBookAuthors(this.product.BookId);
                   // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
                  
@@ -159,9 +159,12 @@ export default {
 
     },
     computed: {
-        ...mapGetters({
-            searchShopping: ['cart/searchShoppingCart'](this.product)
-        }),
+        ...mapGetters([
+            'searchShoppingCart'
+        ]),
+        ...mapState([
+            'cart',
+        ]),
         ...mapActions([
              'cart/addProductToShoppingCart',
              'cart/calculateCartTotal',
