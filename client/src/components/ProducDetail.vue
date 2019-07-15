@@ -66,11 +66,11 @@
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="addProductToCart(product)" v-if="this.$store.getters.isLoggedIn">Add to Cart</b-button>
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="goToLogin()" v-if="!this.$store.getters.isLoggedIn">Please Login to Add To Cart</b-button>                  
                     </div>
-                    <div class="panel-block" v-if="this.$store.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id) !== -1">
+                    <div class="panel-block" v-if="this.$store.getters.searchShopping(product)">
                     <b-button type="is-primary" style="display: block; width: 100%;" @click="removeProductFromCart(product)">Remove from Cart</b-button>
                     </div>
 
-                    <div class="panel-block" v-if="this.$store.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id) !== -1">
+                    <div class="panel-block" v-if="this.$store.getters.searchShopping(product)">
                     <router-link :to="{name:'cart'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;">Go to Cart</b-button></router-link>
                     
                     </div>
@@ -86,6 +86,9 @@
 // import Product  from '../components/Product'
 import BookService from '../services/BookService'
 import ProductService from '../services/ProductService'
+import { mapState } from  'vuex'
+import { mapActions} from  'vuex'
+import { mapGetters } from  'vuex'
 
 export default {
     //  components:{
@@ -154,6 +157,17 @@ export default {
             }
         },
 
+    },
+    computed: {
+        ...mapGetters({
+            searchShopping: ['cart/searchShoppingCart'](this.product)
+        }),
+        ...mapActions([
+             'cart/addProductToShoppingCart',
+             'cart/calculateCartTotal',
+             'cart/calculateTotalCartItems',
+             'cart/removeProductFromShoppingCart',
+         ])
     }
 }
 </script>

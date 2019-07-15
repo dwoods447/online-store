@@ -34,6 +34,9 @@
 </template>
 <script>
 import AuthenticationService from '../services/AuthenticationService'
+import { mapState } from  'vuex'
+import { mapGetters } from  'vuex'
+import { mapActions} from  'vuex'
 export default {
     data(){
         return {
@@ -62,14 +65,26 @@ export default {
                 console.log(`Login Response: ${JSON.stringify(loginSuccess)}`);
                 if(loginSuccess){
                     this.$router.push({name: 'cart'});
-                    this.$store.dispatch('setLogIn');
-                    this.$store.dispatch('setCurrentLoggedInCustomer', loginSuccess.data.data);
+                    this.$store.dispatch('authentication/setLogIn');
+                    this.$store.dispatch('authentication/setCurrentLoggedInCustomer', loginSuccess.data.data);
                 }
             } catch(error){
                 console.log(error)
             }
            
         }
+    },
+    computed: {
+        ...mapGetters({
+            products: 'products/getAvailableProducts'
+        }),
+        ...mapState([
+           
+        ]),
+         ...mapActions([
+             'authentication/setLogIn',
+             'authentication/setCurrentLoggedInCustomer'
+        ])
     }
 }
 </script>
