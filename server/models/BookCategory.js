@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
         })
 
         BookCategory.associate = function(models){
-            BookCategory.belongsTo(models.Category)
-            BookCategory.belongsTo(models.Book)
+            BookCategory.belongsTo(models.Category);
+            BookCategory.belongsTo(models.Book);
          }
 
       return BookCategory;  

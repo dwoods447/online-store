@@ -26,6 +26,7 @@ const products = require('./routes/products');
 const authors = require('./routes/authors');
 const customers = require('./routes/customers');
 const authentication = require('./routes/authentication');
+const orders = require('./routes/orders')
 // const csrf = require('./routes/csrf');
 
 
@@ -48,7 +49,7 @@ app.use('/products', products);
 app.use('/authors', authors);
 app.use('/customers', customers);
 app.use('/auth', authentication)
-// app.use('/csrf', csrf)
+app.use('/orders', orders);
 
 
 

@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="container">
+        <section>
         <div class="columns">
             <div class="column is-9">
             <div class="panel">
@@ -73,12 +74,15 @@
                     <div class="panel-block" v-if="this.searchShoppingCart(product.id)">
                     <router-link :to="{name:'cart'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;" >Go to Cart</b-button></router-link>
                     </div>
+                    <div class="panel-block">
+                    <router-link :to="{name:'home'}" style="text-decoration: none; display: block; width: 100%;"><b-button type="is-primary" style="display: block; width: 100%;" >Continue Shopping</b-button></router-link>
+                    </div>
             </div>
                
                   
             </div>
         </div>
-    
+      </section>
     </div>
 </template>
 <script>
@@ -127,7 +131,7 @@ export default {
              this.$store.dispatch('cart/removeProductFromShoppingCart', product);
              this.$store.dispatch('cart/calculateCartTotal');
              this.$store.dispatch('cart/calculateTotalCartItems');
-              const itemStillInCart = this.$store.state.shoppingCart.findIndex(item => item.id === product.id);
+              const itemStillInCart = this.$store.state.cart.shoppingCart.findIndex(item => item.id === product.id);
                 if(itemStillInCart === -1){
                     console.log(` not in cart anymore`)
                     this.productInCart = false;

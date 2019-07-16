@@ -18,7 +18,7 @@
             </div>
         </div>
         <div v-if="books.length <= 0">
-            <h2 style="margin: 0 auto; text-align:center;">No books in this category yet...</h2>
+            <h2 style="margin: 0 auto; text-align:center;">We're not selling books in this category yet...</h2>
         </div>
            
     </div>

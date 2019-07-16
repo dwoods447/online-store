@@ -13,29 +13,83 @@
                             aria-controls="contentIdForA11y3">
                             <div class="panel-heading"> <a> <p><strong>Payment Type</strong></p><b-icon :icon="props.open ? 'menu-down' : 'menu-up'" style="display: inline;"></b-icon></a></div>
                         </div>
-                        <div class="panel-block">
+                        <div class="panel-block" style="display: block;">
                             <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a>#buefy</a>.
+                               <b-button type="is-primary" style="display: block; width: 100%; height: 43px; padding: 0.1em;" @click="hasCreditCard">Credit Card</b-button>
+                               <div class="separator">OR</div>
+                               <b-button  type="is-primary"  style="display: block; width: 100%; height: 43px; padding: 0.1em;" @click="hasPayPal"><img src="../assets/paypal.svg"></b-button>
                             </div>
                         </div>
                         </b-collapse>
-                        <b-collapse  aria-id="contentIdForA11y1">
+                        <b-collapse  aria-id="contentIdForA11y1" v-if="isCreditCard">
                         <div
                             slot="trigger" 
                             slot-scope="props"
                             class="panel"
                             role="button"
                             aria-controls="contentIdForA11y1">
-                            <div class="panel-heading"> <a> <p><strong>Billing Address</strong></p><b-icon :icon="props.open ? 'menu-down' : 'menu-up'" style="display: inline;"></b-icon></a></div>
+                            <div class="panel-heading"> <a> <p><strong>Shipping Address</strong></p><b-icon :icon="props.open ? 'menu-down' : 'menu-up'" style="display: inline;"></b-icon></a></div>
                         </div>
-                        <div class="panel-block">
-                            <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a>#buefy</a>.
+                        <div class="panel-block" >
+                            <div class="content" style="width: 100%;">
+                               <form>
+                                    <b-field label="First Name">
+                                        <b-input v-model="first_name"></b-input>
+                                    </b-field>
+                                    <b-field label="Last Name">
+                                        <b-input v-model="last_name"></b-input>
+                                    </b-field>
+                                    <b-field label="Phone">
+                                        <b-input v-model="phone"></b-input>
+                                    </b-field>
+                                    <b-field label="Street Address">
+                                        <b-input v-model="address"></b-input>
+                                    </b-field>
+                                     <b-field label="City">
+                                        <b-input v-model="city"></b-input>
+                                     </b-field>
+                                    <b-field label="Country">
+                                        <b-input v-model="country"></b-input>
+                                    </b-field>
+
+                                    <b-button @click="goToCreditCardInfo" type="is-primary"  style="display: block; width: 100%; height: 43px; padding: 0.1em;">Continue</b-button>
+                               </form>
                             </div>
                         </div>
                         </b-collapse>
+                         <b-collapse  aria-id="contentIdForA11y4" v-if="isPaypal">
+                        <div
+                            slot="trigger" 
+                            slot-scope="props"
+                            class="panel"
+                            role="button"
+                            aria-controls="contentIdForA11y4">
+                            <div class="panel-heading"> <a> <p><strong>Paypal Payment</strong></p><b-icon :icon="props.open ? 'menu-down' : 'menu-up'" style="display: inline;"></b-icon></a></div>
+                        </div>
+                        <div class="panel-block" style="display: block;">
+                            <div class="content">
+                              I'm sorry this feature has been disabled.
+                            </div>
+                        </div>
+                        </b-collapse>
+                        <br/>
+                         <b-collapse  aria-id="contentIdForA11y4" v-if="creditCardInfoReady">
+                        <div
+                            slot="trigger" 
+                            slot-scope="props"
+                            class="panel"
+                            role="button"
+                            aria-controls="contentIdForA11y4">
+                            <div class="panel-heading"> <a> <p><strong>Payment Details</strong></p><b-icon :icon="props.open ? 'menu-down' : 'menu-up'" style="display: inline;"></b-icon></a></div>
+                        </div>
+                        <div class="panel-block" style="display: block;">
+                            <div class="content">
+                              I'm sorry this feature has been disabled.
+                            </div>
+                        </div>
+                        </b-collapse>
+                        <br/>
+                        <b-button v-if="displayPay" @click="checkOut" type="is-primary"  style="display: block; width: 100%; height: 43px; padding: 0.1em;">Pay</b-button>
                      </div>
 
 
@@ -96,13 +150,23 @@
 </template>
 <script>
 import ProductService from '../services/ProductService'
+import OrderService from '../services/OrderService'
 import { mapState, createNamespacedHelpers } from  'vuex'
 import { mapActions } from  'vuex'
 const { mapGetters } = createNamespacedHelpers('cart');
 export default {
     data(){
         return{
-
+            first_name: '',
+            last_name: '',
+            phone: '',
+            address: '',
+            city: '',
+            country: '', 
+            isCreditCard: false,
+            isPaypal: false,
+            displayPay: false,
+            creditCardInfoReady: false,
         }
     },
     methods:{
@@ -118,6 +182,40 @@ export default {
                   // Decreasing item qty
                 }
         },
+
+        hasCreditCard(){
+            this.isCreditCard = true;
+            this.isPaypal = false;
+        },
+
+        hasPayPal(){
+            this.isPaypal = true;
+            this.isCreditCard = false;
+            this.displayPay = true;
+        },
+
+        checkOut(){
+            if(confirm('Are You Sure You Want to Order these items ?')){
+                let order  = {}; 
+                let products, customer;
+                products = this.$store.state.cart.searchShoppingCart;
+                customer = this.$store.state.customer;
+                order = {
+                  'products': products,  // array of objects
+                  'customer': customer, // object
+
+                }
+                console.log(`Ordering ${JSON.stringify(order)}`);
+                const ordered = OrderService.orderProduct(order);
+
+            } else{
+
+            }
+        },
+        goToCreditCardInfo(){
+            this.creditCardInfoReady = true;
+            this.displayPay = true;
+        }
     },
     computed: {
          ...mapState([
@@ -137,3 +235,21 @@ export default {
     }
 }
 </script>
+<style scoped>
+  .separator{
+    font-size: 1.1rem;
+    margin-top: 1.3em;
+    margin-bottom: 1.3em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .separator::before {
+    margin-right: 0.15em;
+}
+ .separator::before, .separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+} 
+</style>

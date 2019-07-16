@@ -22,7 +22,6 @@ export default {
         this.getAllCategories();
     },
     mounted(){
-
     },
     data(){
         return {
@@ -35,7 +34,6 @@ export default {
             const categories = (await CategoriesService.getAllCategories()).data.data;
             if(categories){
                 this.categories = categories;
-                // console.log(JSON.stringify(this.categories, null, 2))
             }
         },
         addCategory(categoryId){
