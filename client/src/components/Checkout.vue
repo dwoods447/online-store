@@ -34,22 +34,22 @@
                             <div class="content" style="width: 100%;">
                                <form>
                                     <b-field label="First Name">
-                                        <b-input v-model="first_name"></b-input>
+                                        <b-input v-model="shipping.first_name"></b-input>
                                     </b-field>
                                     <b-field label="Last Name">
-                                        <b-input v-model="last_name"></b-input>
+                                        <b-input v-model="shipping.last_name"></b-input>
                                     </b-field>
                                     <b-field label="Phone">
-                                        <b-input v-model="phone"></b-input>
+                                        <b-input v-model="shipping.phone"></b-input>
                                     </b-field>
                                     <b-field label="Street Address">
-                                        <b-input v-model="address"></b-input>
+                                        <b-input v-model="shipping.address"></b-input>
                                     </b-field>
                                      <b-field label="City">
-                                        <b-input v-model="city"></b-input>
+                                        <b-input v-model="shipping.city"></b-input>
                                      </b-field>
                                     <b-field label="Country">
-                                        <b-input v-model="country"></b-input>
+                                        <b-input v-model="shipping.country"></b-input>
                                     </b-field>
 
                                     <b-button @click="goToCreditCardInfo" type="is-primary"  style="display: block; width: 100%; height: 43px; padding: 0.1em;">Continue</b-button>
@@ -157,12 +157,15 @@ const { mapGetters } = createNamespacedHelpers('cart');
 export default {
     data(){
         return{
-            first_name: '',
-            last_name: '',
-            phone: '',
-            address: '',
-            city: '',
-            country: '', 
+            shipping: {
+                first_name: '',
+                last_name: '',
+                phone: '',
+                address: '',
+                city: '',
+                country: '', 
+            },
+           
             isCreditCard: false,
             isPaypal: false,
             displayPay: false,
@@ -198,18 +201,24 @@ export default {
             if(confirm('Are You Sure You Want to Order these items ?')){
                 let order  = {}; 
                 let products, customer;
-                products = this.$store.state.cart.searchShoppingCart;
+                products = this.$store.state.cart.shoppingCart;
                 customer = this.$store.state.customer;
                 order = {
                   'products': products,  // array of objects
                   'customer': customer, // object
-
+                  'shipping': this.shipping  // object
                 }
                 console.log(`Ordering ${JSON.stringify(order)}`);
                 const ordered = OrderService.orderProduct(order);
+                if(ordered){
+                    this.$store.dispatch('setPurchasedProducts', products);
+                    this.$store.dispatch('setPurchaseTotal', this.$store.state.cart.orderTotal);
+                    this.$router.push({name: 'order.confirmation'});
+                    this.$store.dispatch('cart/clearAllInCart');
+                }
 
             } else{
-
+                // User is not ready to checkout
             }
         },
         goToCreditCardInfo(){

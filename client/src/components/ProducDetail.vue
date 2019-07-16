@@ -147,18 +147,27 @@ export default {
             }
         },
         async getProduct(){
+            try {
             this.product = {};
             // console.log('Getting product with id ' + productID)
-           // const productID = this.$store.state.route.params.productId;
-           const bookID = this.$store.state.route.params.bookId
-            const product = (await ProductService.getProductByBookId(bookID)).data.data[0]
-            if(product){
-                this.product = product;
-                 // console.log('book Id: ' + JSON.stringify(this.product, null,2));
-                 this.getBookAuthors(this.product.BookId);
-                  // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
-                 
+ 
+          console.log(`Route Query: ${ JSON.stringify(this.$route.query.bookId)}`);
+          console.log(`Route Params: ${ JSON.stringify(this.$route.params.bookId)}`)
+            const bookID = this.$route.query.bookId;
+                if(bookID){
+                    const product = (await ProductService.getProductByBookId(bookID)).data.data[0];
+                        if(product){
+                        this.product = product;
+                        // console.log('book Id: ' + JSON.stringify(this.product, null,2));
+                        this.getBookAuthors(this.product.BookId);
+                        // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
+                        
+                    }
+                }    
+            } catch (error){
+                console.log(`Product Detail Error: ${error}`);
             }
+          
         },
 
     },

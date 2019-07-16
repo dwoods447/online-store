@@ -47,7 +47,8 @@ export default {
             const products = (await ProductService.index()).data.data;
             if(products){
                 this.prods = products;
-                this.$store.dispatch("setStoreProducts", products);
+        
+                // this.$store.dispatch("setStoreProducts", products);
             }
         },
 

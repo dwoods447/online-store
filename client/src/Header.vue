@@ -20,7 +20,7 @@
                     <div class="buttons">
                     <router-link :to="{name: 'signup'}" class="button is-primary" v-if="!isLoggedIn">Sign up</router-link>
                     <router-link :to="{name: 'login'}" class="button is-light" v-if="!isLoggedIn">Login</router-link>
-                   <span v-if="customer" style="padding: 1.2em;"><span>Welcome, </span>&nbsp;<span><strong>{{ customer.first_name }}</strong></span>&nbsp;<span><strong>{{ customer.last_name }}</strong></span>&nbsp;&nbsp;</span>      
+                   <span v-if="customer !== null && isLoggedIn !== null" style="padding: 1.2em;"><span>Welcome, </span>&nbsp;<span><strong>{{ customer.first_name }}</strong></span>&nbsp;<span><strong>{{ customer.last_name }}</strong></span>&nbsp;&nbsp;</span>      
                     <button @click="logout" class="button is-light" v-if="isLoggedIn">Logout</button>
                     <router-link :to="{name:'cart'}" class="button is-light"><i class="fas fa-shopping-cart"></i><span style="color:red; padding: 0 5px; vertical-align: top;">{{ count }}</span></router-link>                  
                     </div>
@@ -43,11 +43,10 @@ export default {
     },
     methods: {
     async logout(){
-            this.$store.dispatch('setCurrentLoggedInCustomer', null);
             this.$store.dispatch('cart/clearAllInCart');
             this.$store.dispatch('setLogOut');
             AuthenticationService.logout();
-            this.$router.push({name: 'login'});
+            this.$router.push({name: 'home'});
             
      }
     },

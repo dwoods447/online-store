@@ -1,9 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate'
+import Vue from 'vue'
+import Vuex from 'vuex'
+// import VuexPersistence from 'vuex-persist'
+ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex);
 import cart from './modules/cart'
 const store = new Vuex.Store({
+    // plugins: [new VuexPersistence({supportCircular: true}).plugin],
     plugins: [createPersistedState()],
     modules: {
         cart
@@ -13,10 +15,16 @@ const store = new Vuex.Store({
         csrfToken: null,
         isLoggedIn: false,
         customer: null,
+        purchasedProducts: [],
+        purchaseTotal: 0,
     },
     mutations: {
         setLogOutMutation(state){
-            state.isLoggedIn = null;
+            state.isLoggedIn = false;
+            state.customer = null;
+            state.csrfToken = null;
+            state.purchasedProducts = [];
+            state.purchaseTotal = 0;
         },
         setLogin(state){
             state.isLoggedIn = true;
@@ -28,8 +36,23 @@ const store = new Vuex.Store({
             state.csrfToken = token;
         },
         setProducts(state, products){
+            state.products = [];
             state.products = products;
         },
+        setPurchasedProductsMutation(state, products){
+            state.purchasedProducts = [];
+            state.purchasedProducts = products;
+        },
+        setPurchaseTotalMutation(state, total){
+            state.purchaseTotal = total;
+        },
+        clearPurchaseTotal(state){
+            state.purchaseTotal = 0;
+        },
+        clearPurchasedProducts(state){
+            state.purchasedProducts = [];
+        }
+
     },
     actions: {
         setLogOut(context){
@@ -37,6 +60,9 @@ const store = new Vuex.Store({
         },
         setLogIn(context){
             context.commit('setLogin');
+        },
+        setPurchaseTotal(context, total) {
+            context.commit('setPurchaseTotalMutation', total);
         },
         setCurrentLoggedInCustomer(context, customer){
             context.commit('setCurrentLoggedInCustomer', customer);
@@ -46,7 +72,16 @@ const store = new Vuex.Store({
         },
         setStoreProducts(context, products){
             context.commit('setProducts', products);
-        }, 
+        },
+        setPurchasedProducts(context, products){
+            context.commit('setPurchasedProductsMutation', products);   
+        },
+        clearPurchaseTotal(context){
+            context.commit('');
+        },
+        clearPurchasedProducts(context){
+            context.commit('');
+        }
     },
     getters: {
         isLoggedIn(state, getters){
@@ -58,9 +93,18 @@ const store = new Vuex.Store({
         getCustomer(state, getters){
             return state.customer;
         },
-        getAvailableProducts(state){
-                return state.products.filter(product => product.qty > 0);
+        getPurchasedProducts(state, getters){
+            return state.purchasedProducts
+        },
+        getShippingProductsCount(state, getters){
+            return state.purchasedProducts.length
+        },
+        getPurchaseTotal(state, getters){
+            return state.purchaseTotal;
         }
+        // getAvailableProducts(state){
+        //         return state.products.filter(product => product.qty > 0);
+        // }
          
     },
     

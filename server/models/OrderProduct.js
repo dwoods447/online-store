@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER   
            },
            price: {
-            type: DataTypes.INTEGER   
+            type: DataTypes.DECIMAL(10,2)  
            }
 
     })

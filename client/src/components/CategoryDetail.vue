@@ -37,7 +37,7 @@ export default {
     },
     methods:{
         async getBookCategories(){
-            const categoryId = this.$store.state.route.params.categoryId;
+            const categoryId = this.$route.params.categoryId;
             // console.log(`Getting Books in cat: ${categoryId}`);
             const books = (await CategoriesService.getBookCategory(categoryId)).data.data;
             if(books){

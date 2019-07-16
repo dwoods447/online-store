@@ -58,15 +58,15 @@ export default {
         },
         async submitCredentials(){
             try {
-                const loginSuccess = await AuthenticationService.login({
+                const user = (await AuthenticationService.login({
                     email: this.formData.email,
                     password: this.formData.password
-                });
-                console.log(`Login Response: ${JSON.stringify(loginSuccess)}`);
-                if(loginSuccess){
-                    this.$router.push({name: 'cart'});
+                })).data.data;
+                console.log(`Login Response: ${JSON.stringify(user)}`);
+                if(user){
+                    this.$router.push({name: 'home'});
                     this.$store.dispatch('setLogIn');
-                    this.$store.dispatch('setCurrentLoggedInCustomer', loginSuccess.data.data);
+                    this.$store.dispatch('setCurrentLoggedInCustomer', user);
                 }
             } catch(error){
                 console.log(error)

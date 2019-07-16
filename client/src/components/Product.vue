@@ -1,7 +1,7 @@
 <template>
     <div>
                 <div class="card-container">
-                     <router-link :to="{name: 'product.detail', params: {bookId: product.BookId, product: product }}">
+                     <router-link :to="{name: 'product.detail', params: {bookId: product.BookId }, query: {bookId: product.BookId}}">
                         <div class="card">                       
                             <div class="card-content">
                                 <div class="card-image"><img :src="product.Book.image" :alt="product.Book.title"></div>
