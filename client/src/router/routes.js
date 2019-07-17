@@ -8,6 +8,7 @@ import SignUp from '../components/SignUp.vue'
 import Login from '../components/Login.vue'
 import Checkout from '../components/Checkout.vue'
 import OrderConfirmation from '../components/OrderConfirmation.vue'
+import ViewOrders from '../components/ViewOrders'
 // import store from '../store/store'
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
   {path: '/cart', component: ShoppingCart, name: 'cart'},
   {path: '/checkout', component: Checkout, name: 'checkout'},
   {path: '/order/confirmation', component: OrderConfirmation, name: 'order.confirmation'},
+  {path: '/view/customer/:customerId/orders', component: ViewOrders, name: 'view.orders'},
   {path: '/signup', component: SignUp, name: 'signup'},
   {path: '/login', component: Login, name: 'login'},
   {path: '/product/:bookId/detail', component: ProductDetail, name: 'product.detail'},

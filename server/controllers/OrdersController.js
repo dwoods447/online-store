@@ -47,14 +47,35 @@ module.exports = {
                     })
                 }
             }
-          } 
-           
             res.send({
                 data: order
-           })
+             })
+
+          }  
         } catch(error){
             res.send({
                error: error
+            })
+        }
+    },
+    async getCustomerOrders(req, res){
+        try{
+            const customerOrders = await Order.findAll({
+                where: {CustomerId: req.params.customerId}
+            })
+            console.log(`Customer Order Back-End ${JSON.stringify(customerOrders)}`);
+            if(customerOrders.length > 0){
+                res.send({
+                    data: customerOrders
+                })
+            }  else {
+                res.send({
+                    data: []
+                })
+            }
+        } catch(error){
+            res.send({
+                error: error
             })
         }
     }

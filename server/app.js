@@ -29,14 +29,13 @@ const authentication = require('./routes/authentication');
 const orders = require('./routes/orders')
 // const csrf = require('./routes/csrf');
 
-
 app.use(session({
   secret: 'keyboard cat',
   store: new SequelizeStore({
     db: sequelize
   }),
-  resave: false, // we support the touch method so per the express-session docs this should be set to false
-  proxy: true, // if you do SSL outside of node.
+  resave: false,
+  proxy: true,
   saveUninitialized: false
 }))
 
@@ -62,8 +61,8 @@ app.set('port', process.env.PORT || config.port);
 try {
     sequelize.sync().then(() =>{
         console.log(`Connection Successfull.....\r\n\r\n`);
-        app.listen(process.env.PORT || port, ()=> console.log(`Application started on PORT ${port}.\r\n\r\n`))
+        app.listen(process.env.PORT || port, ()=> console.log(`Application started on PORT ${port}.\r\n\r\n`));
     })
  } catch(err){
-    console.log(`AN ERROR OCCURRED: ${err}`)
+    console.log(`AN ERROR OCCURRED: ${err}`);
 }
