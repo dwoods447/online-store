@@ -197,7 +197,7 @@ export default {
             this.displayPay = true;
         },
 
-        checkOut(){
+        async checkOut(){
             if(confirm('Are You Sure You Want to Order these items ?')){
                 let order  = {}; 
                 let products, customer;
@@ -209,11 +209,12 @@ export default {
                   'shipping': this.shipping  // object
                 }
                 console.log(`Ordering ${JSON.stringify(order)}`);
-                const ordered = OrderService.orderProduct(order);
+                const ordered = (await OrderService.orderProduct(order)).data.data;
+                console.log(`You ordered: ${JSON.stringify(ordered)}`);
                 if(ordered){
                     this.$store.dispatch('setPurchasedProducts', products);
                     this.$store.dispatch('setPurchaseTotal', this.$store.state.cart.orderTotal);
-                    this.$router.push({name: 'order.confirmation'});
+                    this.$router.push({name: 'order.confirmation', params: {orderId: ordered.id}, query: {orderId: ordered.id}});
                     this.$store.dispatch('cart/clearAllInCart');
                 }
 

@@ -6,13 +6,14 @@ Vue.use(Vuex);
 import cart from './modules/cart'
 const store = new Vuex.Store({
     // plugins: [new VuexPersistence({supportCircular: true}).plugin],
-    plugins: [createPersistedState()],
+      plugins: [createPersistedState()],
     modules: {
         cart
     },
     state: {
         products: [],
         csrfToken: null,
+        jwtToken: null,
         isLoggedIn: false,
         customer: null,
         purchasedProducts: [],
@@ -51,7 +52,13 @@ const store = new Vuex.Store({
         },
         clearPurchasedProducts(state){
             state.purchasedProducts = [];
-        }
+        },
+        setJWTtokenMutation(state, token){
+            state.jwtToken = token;
+        },
+        clearJWTtokenMutation(state){
+            state.jwtToken = null; 
+        },
 
     },
     actions: {
@@ -77,10 +84,16 @@ const store = new Vuex.Store({
             context.commit('setPurchasedProductsMutation', products);   
         },
         clearPurchaseTotal(context){
-            context.commit('');
+            context.commit('clearPurchaseTotal');
         },
         clearPurchasedProducts(context){
-            context.commit('');
+            context.commit('clearPurchasedProducts');
+        },
+        setJWTtokenAction(context, token){
+            context.commit('setJWTtokenMutation', token);
+        },
+        clearJWTtokenAction(context){
+            context.commit('clearJWTtokenMutation');
         }
     },
     getters: {

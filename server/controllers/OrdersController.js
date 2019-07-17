@@ -78,5 +78,50 @@ module.exports = {
                 error: error
             })
         }
-    }
+    },
+
+    async getProductsForOrder(req, res){
+        try {
+            const orderId = req.params.orderId;
+            const orderProducts = await OrderProduct.findAll({
+                where: {OrderId: orderId}
+            })  
+            console.log(`Order products found ${JSON.stringify(orderProducts)}`); 
+            if(orderProducts.length > 0){
+                res.send({
+                    data: orderProducts
+                })
+            } else {
+                res.send({
+                    data: []
+                })
+            }   
+        }catch(error){
+            res.send({
+                error: error
+            })
+        }
+    },
+
+    async getOrder(req, res){
+        try { 
+        const orderID = req.params.orderId;
+        const order = await Order.findAll({
+            where: {id: orderID}
+        })
+        if(order.length > 0){
+            res.send({
+                data: order  
+            })
+        } else {
+            res.send({
+                data: []
+            })     
+        }
+    }catch(error){
+            res.send({
+                error: error
+            })
+      }
+   },
 }

@@ -9,6 +9,8 @@ import Login from '../components/Login.vue'
 import Checkout from '../components/Checkout.vue'
 import OrderConfirmation from '../components/OrderConfirmation.vue'
 import ViewOrders from '../components/ViewOrders'
+import PageNotFound from '../components/PageNotFound'
+import ViewOrderProducts from '../components/ProductsOrdered.vue'
 // import store from '../store/store'
 
 const routes = [
@@ -17,11 +19,13 @@ const routes = [
   {path: '/checkout', component: Checkout, name: 'checkout'},
   {path: '/order/confirmation', component: OrderConfirmation, name: 'order.confirmation'},
   {path: '/view/customer/:customerId/orders', component: ViewOrders, name: 'view.orders'},
+  {path: '/view/order/:orderId/details', component: ViewOrderProducts, name: 'view.order.products'},
   {path: '/signup', component: SignUp, name: 'signup'},
   {path: '/login', component: Login, name: 'login'},
   {path: '/product/:bookId/detail', component: ProductDetail, name: 'product.detail'},
   {path: '/categories', component: Categories, name: 'book.categories'},
-  {path: '/category/:categoryId/detail', component: CategoryDetail, name: 'category.detail'}
+  {path: '/category/:categoryId/detail', component: CategoryDetail, name: 'category.detail'},
+  {path: '*', component: PageNotFound }
  //{path: '/checkout', component: CheckOut, name: 'checkout'}
 
 ]

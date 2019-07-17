@@ -1,5 +1,13 @@
 const { Customer } = require('../models');
 const bcrypt = require('../app').bcrypt
+const jwt  = require('jsonwebtoken');
+const config = require('../config/config');
+
+function jwtSignCustomer(customer){
+    const ONE_DAY = 60 * 60 * 24 * 1;
+    return jwt.sign(customer, config.auth.jwtSecret, {expiresIn: ONE_DAY} )
+}
+
 
 module.exports = {
     async login(req, res){
@@ -26,6 +34,7 @@ module.exports = {
                 req.session.customer = customer;
                 res.send({
                     data: customerJSON,
+                    token: jwtSignCustomer(customerJSON)
                 })
               }   
             } catch(error){

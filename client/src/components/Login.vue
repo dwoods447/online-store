@@ -61,12 +61,17 @@ export default {
                 const user = (await AuthenticationService.login({
                     email: this.formData.email,
                     password: this.formData.password
-                })).data.data;
-                console.log(`Login Response: ${JSON.stringify(user)}`);
-                if(user){
-                    this.$router.push({name: 'home'});
+                }));
+                let token = user.data.token;
+                let userData = user.data.data;
+                console.log(`Login Response: ${JSON.stringify(token)}`);
+                if(userData){
+                     
                     this.$store.dispatch('setLogIn');
-                    this.$store.dispatch('setCurrentLoggedInCustomer', user);
+                    this.$store.dispatch('setCurrentLoggedInCustomer', userData);
+                     console.log('Token: ' + token);
+                     this.$store.dispatch('setJWTtokenAction', token);
+                     this.$router.push({name: 'home'});
                 }
             } catch(error){
                 console.log(error)

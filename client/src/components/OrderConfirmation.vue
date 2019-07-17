@@ -3,7 +3,7 @@
         <section>
             <div class="columns">
                 <div class="column">
-                     <h1>Thanks for your order!</h1>
+                     <h1>Thanks for your order!  Order#{{ orderNumber }}</h1>
                      <p>Hi {{this.$store.state.customer.first_name}} {{this.$store.state.customer.last_name}},</p>
                      <p>Were processing your order and will let you know when it ships. Thanks for shopping with us.</p>
                 </div>
@@ -95,8 +95,13 @@ export default {
         },
         purchaseTotal(){
             return this.$store.getters.getPurchaseTotal
+        },
+        orderNumber(){
+            console.log(`Order Id: ${this.$route.query.orderId}`)
+            return this.$route.query.orderId;
         }
-    }
+    },
+   
 }
 </script>
 

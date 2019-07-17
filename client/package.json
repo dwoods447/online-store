@@ -12,6 +12,7 @@
     "buefy": "^0.7.8",
     "core-js": "^2.6.5",
     "flatted": "^2.0.1",
+    "moment": "^2.24.0",
     "vee-validate": "^2.2.11",
     "vue": "^2.6.10",
     "vue-paginate": "^3.6.0",

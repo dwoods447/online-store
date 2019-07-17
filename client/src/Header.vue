@@ -21,7 +21,7 @@
                     <router-link :to="{name: 'signup'}" class="button is-primary" v-if="!isLoggedIn">Sign up</router-link>
                     <router-link :to="{name: 'login'}" class="button is-light" v-if="!isLoggedIn">Login</router-link>
                     <span v-if="customer !== null && isLoggedIn !== null" style="padding: 1.2em;"><span>Welcome, </span>&nbsp;<span><strong>{{ customer.first_name }}</strong></span>&nbsp;<span><strong>{{ customer.last_name }}</strong></span>&nbsp;&nbsp;</span>
-                     <b-dropdown aria-role="list">
+                     <b-dropdown aria-role="list" v-if="customer !== null && isLoggedIn !== null">
                         <button slot="trigger" class="button is-light">
                             <span style="margin: 0 auto; font-size: 1.3em;"><i class="far fa-user-circle"></i></span>
                         </button>
@@ -52,9 +52,10 @@ export default {
     async logout(){
             this.$store.dispatch('cart/clearAllInCart');
             this.$store.dispatch('setLogOut');
+            this.$store.dispatch('clearJWTtokenAction');
             AuthenticationService.logout();
             this.$router.push({name: 'home'});
-            
+           
      }
     },
     computed:{
