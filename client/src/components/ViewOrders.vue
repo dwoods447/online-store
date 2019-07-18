@@ -49,11 +49,8 @@ export default {
     },
     methods: {
        async getOrders(){
-           console.log(`Getting Orders....`);
            const customerID = this.$route.query.customerId;
-           console.log(`Customer ID: ${customerID}`);
            const orders = (await OrderService.getOrders(customerID)).data.data;
-           console.log(`Orders Returned: ${JSON.stringify(orders)}`);
            if(orders.length > 0){
                this.orders = orders
            }

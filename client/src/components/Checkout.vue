@@ -174,7 +174,6 @@ export default {
     },
     methods:{
            removeCartItem(product){
-             console.log(`Removing Product: ${JSON.stringify(product.product)}`);
              this.$store.dispatch('cart/removeProductFromShoppingCart', product.product);
               this.$store.dispatch('cart/calculateCartTotal');
               this.$store.dispatch('cart/calculateTotalCartItems');
@@ -208,9 +207,7 @@ export default {
                   'customer': customer, // object
                   'shipping': this.shipping  // object
                 }
-                console.log(`Ordering ${JSON.stringify(order)}`);
                 const ordered = (await OrderService.orderProduct(order)).data.data;
-                console.log(`You ordered: ${JSON.stringify(ordered)}`);
                 if(ordered){
                     this.$store.dispatch('setPurchasedProducts', products);
                     this.$store.dispatch('setPurchaseTotal', this.$store.state.cart.orderTotal);

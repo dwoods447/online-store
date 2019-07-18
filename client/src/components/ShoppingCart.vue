@@ -14,7 +14,7 @@
                                         <div class="column is-9">
                                             <ul>
                                                 <li>{{ product.product.Book.title }}</li>
-                                                <li>Price: {{product.product.price }}</li>
+                                                <li>Price: &nbsp;${{product.product.price }}</li>
                                                 <li>Qty: {{  product.quantity }}</li>
                                                 <a @click="removeCartItem(product)">Remove Cart Item</a>
                                             </ul>
@@ -82,7 +82,6 @@ export default {
     },
     methods:{
         removeCartItem(product){
-             console.log(`Removing Product: ${JSON.stringify(product.product)}`);
              this.$store.dispatch('cart/removeProductFromShoppingCart', product.product);
               this.$store.dispatch('cart/calculateCartTotal');
               this.$store.dispatch('cart/calculateTotalCartItems');

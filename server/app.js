@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('./config/config');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path')
 const morgan  = require('morgan');
 const cors = require('cors');
 const {sequelize} = require('./models');
@@ -49,6 +50,10 @@ app.use(session({
 //   next();
 // });
 
+
+// Front-End Client 
+ app.use('/', express.static(path.join(__dirname, '../client/dist')));
+
 app.use('/admin', admin);
 app.use('/books', books);
 app.use('/categories', categories);
@@ -57,10 +62,6 @@ app.use('/authors', authors);
 app.use('/customers', customers);
 app.use('/auth', authentication)
 app.use('/orders', orders);
-
-
-
-  
 // Catch 404 errors
 app.use('*', express.static('./views/404.html'));
 

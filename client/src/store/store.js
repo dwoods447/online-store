@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import VuexPersistence from 'vuex-persist'
- import createPersistedState from 'vuex-persistedstate'
+ // import VuexPersistence from 'vuex-persist'
+  import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex);
 import cart from './modules/cart'
 const store = new Vuex.Store({
-    // plugins: [new VuexPersistence({supportCircular: true}).plugin],
-     plugins: [createPersistedState()],
+     //plugins: [new VuexPersistence({supportCircular: true}).plugin],
+       plugins: [createPersistedState()],
     modules: {
         cart
     },
@@ -28,7 +28,9 @@ const store = new Vuex.Store({
             state.purchaseTotal = 0;
         },
         setLogin(state){
-            state.isLoggedIn = true;
+            if(state.customer){
+                state.isLoggedIn = true;
+            }
         },
         setCurrentLoggedInCustomer(state, customer){
             state.customer = customer;
@@ -116,7 +118,6 @@ const store = new Vuex.Store({
             return state.purchaseTotal;
         },
         getAvailableProducts(state){
-          //console.log(`Getter products: ${JSON.stringify(state.products)}`);  
           return state.products.filter(product => product.qty > 0);
         }
          

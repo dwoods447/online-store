@@ -84,9 +84,7 @@ export default {
 
         async getCSRFToken(context){
             const token = (await AuthenticationService.csrfToken()).data.csrfToken;
-            console.log(`Token recieved: ${JSON.stringify(token)}`);
-            if(token){
-                console.log(`Setting CSRF token: ${token}`);  
+            if(token){  
                 this.$store.dispatch('setStoreCSRFtoken', token);
                 this.formdata._csrf = token;
             }
@@ -94,9 +92,7 @@ export default {
 
         async submitInfo(){
             try {
-              console.log(`Sending data: ${JSON.stringify(this.formdata)}`)  
               const registration = (await SignUpService.signUp(this.formdata)).data;
-              console.log(`Registration: ${JSON.stringify(registration)}`)
               if(registration.error){
                 this.message = registration.error;
               } else {

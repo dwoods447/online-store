@@ -41,7 +41,6 @@ module.exports = {
     // List all books in specific category
     async getBookCategory(req, res){
         const catID = req.params.categoryId;
-        console.log(`ID received: ${catID}`);
         try {
             const book_cat = await BookCategory.findAll({
                 where: {CategoryId: catID}, include:[{model: Book}, {model: Category}]

@@ -21,7 +21,6 @@ module.exports = {
                 'error': 'Invalid email or password'
             });
         } else {
-            console.log(`Customer Password: ${customer.password}`)
             try{
               const passwordMatch = await bcrypt.compare(password, customer.password);
               if(!passwordMatch){
@@ -32,13 +31,13 @@ module.exports = {
                 const customerJSON = customer.toJSON();
                 req.session.isLoggedIn = true;
                 req.session.customer = customer;
-                res.send({
-                    data: customerJSON,
+                res.status(200).json({
+                    data: customer,
                     token: jwtSignCustomer(customerJSON)
                 })
               }   
             } catch(error){
-                res.status(500).send({
+                res.status(500).json({
                     error: error
                 })
             }

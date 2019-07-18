@@ -41,13 +41,9 @@ export default {
         },
         removeProductFromShoppingCart(state, productIndex){
             const product = state.shoppingCart[productIndex];
-            console.log(`Product found ${JSON.stringify(product)}`)
             if(product.quantity > 0){
-                // Decrease qty
-                console.log('Decreasing purchase qty');
-                
+                // Decrease qty      
             } else {
-                console.log('Removing product from cart');
                 state.shoppingCart.splice(productIndex, 1);
                 state.shoppingCartCount--;
                 if(state.shoppingCartCount <= 0){
@@ -78,8 +74,6 @@ export default {
                     // add  product to cart
                     context.commit('addProductToShoppingCart', product);
                     context.commit('increaseShoppingCartCount');
-                    
-                   
                 } else {
                     // Increase purchase qty
                      context.commit('increasePurchaseItemQty', cartItem);
@@ -95,8 +89,7 @@ export default {
         calculateCartTotal(context){
             let orderTotal = 0;
             context.state.shoppingCart.forEach((item)=>{
-                 console.log(orderTotal += parseFloat(item.product.price) * parseInt(item.quantity));
-                 // console.log(`${JSON.stringify(item.product)}`);
+                 orderTotal += parseFloat(item.product.price) * parseInt(item.quantity)
             })
             context.commit('calculateCartTotal', orderTotal);
         },
@@ -108,12 +101,10 @@ export default {
            context.commit('calculateTotalCartItems', totalItems);
         },
         removeProductFromShoppingCart(context, product){
-            console.log(`In the store removing...`);
             const productToDecrease = context.state.shoppingCart.find(cartItem => cartItem.id === product.id);
             const productIndex = context.state.shoppingCart.findIndex(cartItem => cartItem.id === product.id);
-            console.log(productIndex);
+            //Check Shopping cart for product with matching id
             if(productIndex !== -1){
-                console.log(`Product found in the cart descreasing it at index: ${productIndex}`);
                 context.commit('decreaseShoppingCartCount');
                 context.commit('decreasePurchaseItemQty', productToDecrease);
                 // if you found the product in the cart remove it from shopping cart

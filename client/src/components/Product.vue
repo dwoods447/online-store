@@ -32,10 +32,7 @@ export default {
     },
     methods: {
         addProductToCart(product){
-            //  console.log(`Product ${JSON.stringify(product)}`);
-            //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)
             this.$store.dispatch('addProductToShoppingCart', product);
-          
         }
     },
   

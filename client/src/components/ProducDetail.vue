@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <section>
-        <div class="columns">
+        <div class="columns" v-if="!notAvailable">
             <div class="column is-9">
             <div class="panel">
                     <div class="panel-heading">
@@ -81,6 +81,12 @@
                
                   
             </div>
+        </div><!-- end of columns -->
+        <div v-if="notAvailable">
+            <div class="centered">
+                <h1 style="font-size: 2.34em;"><span style="color: red;">We're Sorry Product Not Availabe for Purchase</span></h1>
+                <h1><router-link :to="{name: 'book.categories'}">Go Back </router-link></h1>
+            </div>
         </div>
       </section>
     </div>
@@ -110,6 +116,7 @@ export default {
                 authors: [],
                 product: {},
                 productInCart: false,
+                notAvailable: true,
             }
     },
     methods: {
@@ -117,8 +124,6 @@ export default {
             this.$router.push({name: 'login'})
         },
          addProductToCart(product){
-            //  console.log(`Product ${JSON.stringify(product)}`);
-            //  console.log(`Decreasing Product ID: ${JSON.stringify(product.id)}`)
             this.productInCart = true;
             this.$store.dispatch('cart/addProductToShoppingCart', product);
              this.$store.dispatch('cart/calculateCartTotal');
@@ -127,13 +132,11 @@ export default {
         },
 
         removeProductFromCart(product){
-            console.log(`Removing Product: ${JSON.stringify(product)}`);
              this.$store.dispatch('cart/removeProductFromShoppingCart', product);
              this.$store.dispatch('cart/calculateCartTotal');
              this.$store.dispatch('cart/calculateTotalCartItems');
               const itemStillInCart = this.$store.state.cart.shoppingCart.findIndex(item => item.id === product.id);
                 if(itemStillInCart === -1){
-                    console.log(` not in cart anymore`)
                     this.productInCart = false;
                 }
 
@@ -149,20 +152,16 @@ export default {
         async getProduct(){
             try {
             this.product = {};
-            // console.log('Getting product with id ' + productID)
- 
-          console.log(`Route Query: ${ JSON.stringify(this.$route.query.bookId)}`);
-          console.log(`Route Params: ${ JSON.stringify(this.$route.params.bookId)}`)
-            const bookID = this.$route.query.bookId;
+            const bookID = this.$route.params.bookId;
                 if(bookID){
                     const product = (await ProductService.getProductByBookId(bookID)).data.data[0];
                         if(product){
+                        this.notAvailable = false;
                         this.product = product;
-                        // console.log('book Id: ' + JSON.stringify(this.product, null,2));
                         this.getBookAuthors(this.product.BookId);
-                        // console.log(`Product: ${JSON.stringify(this.product, null, 2)}`);
-                        
                     }
+                } else {
+                    this.notAvailable = true;
                 }    
             } catch (error){
                 console.log(`Product Detail Error: ${error}`);
@@ -178,12 +177,12 @@ export default {
         ...mapState([
             'cart',
         ]),
-        ...mapActions([
-             'cart/addProductToShoppingCart',
-             'cart/calculateCartTotal',
-             'cart/calculateTotalCartItems',
-             'cart/removeProductFromShoppingCart',
-         ])
+        // ...mapActions([
+        //      'cart/addProductToShoppingCart',
+        //      'cart/calculateCartTotal',
+        //      'cart/calculateTotalCartItems',
+        //      'cart/removeProductFromShoppingCart',
+        //  ])
     }
 }
 </script>

@@ -36,9 +36,6 @@ export default {
                 this.categories = categories;
             }
         },
-        addCategory(categoryId){
-            // console.log(`Adding Categry ID: ${categoryId}`);
-        }
     },
     computed:{
        

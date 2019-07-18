@@ -24,7 +24,7 @@
                                                     <div class="column is-8">
                                                         <ul>
                                                             <li>{{ product.product.Book.title }}</li>
-                                                            <li>Price: {{product.product.price }}</li>
+                                                            <li>Price: &nbsp;${{product.product.price }}</li>
                                                             <li>Qty: {{  product.quantity }}</li>
                                                         </ul>
                                                     </div>
@@ -97,7 +97,6 @@ export default {
             return this.$store.getters.getPurchaseTotal
         },
         orderNumber(){
-            console.log(`Order Id: ${this.$route.query.orderId}`)
             return this.$route.query.orderId;
         }
     },

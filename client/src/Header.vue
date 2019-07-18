@@ -20,15 +20,15 @@
                     <div class="buttons">
                     <router-link :to="{name: 'signup'}" class="button is-primary" v-if="!isLoggedIn">Sign up</router-link>
                     <router-link :to="{name: 'login'}" class="button is-light" v-if="!isLoggedIn">Login</router-link>
-                    <span v-if="customer !== null && isLoggedIn !== null" style="padding: 1.2em;"><span>Welcome, </span>&nbsp;<span><strong>{{ customer.first_name }}</strong></span>&nbsp;<span><strong>{{ customer.last_name }}</strong></span>&nbsp;&nbsp;</span>
-                     <b-dropdown aria-role="list" v-if="customer !== null && isLoggedIn !== null">
+                    <span v-if="isLoggedIn === true && customer !== null" style="padding: 1.2em;"><span>Welcome, </span>&nbsp;<span><strong>{{ customer.first_name }}</strong></span>&nbsp;<span><strong>{{ customer.last_name }}</strong></span>&nbsp;&nbsp;</span>
+                     <b-dropdown aria-role="list" v-if="isLoggedIn === true">
                         <button slot="trigger" class="button is-light">
                             <span style="margin: 0 auto; font-size: 1.3em;"><i class="far fa-user-circle"></i></span>
                         </button>
-                        <b-dropdown-item aria-role="listitem" v-if="customer"><router-link :to="{name: 'view.orders', params: {customerId: customer.id}, query: {customerId: customer.id}}"> View My Orders </router-link></b-dropdown-item>
+                        <b-dropdown-item aria-role="listitem" v-if="customer !== null"><router-link :to="{name: 'view.orders', params: {customerId: customer.id}, query: {customerId: customer.id}}"> View My Orders </router-link></b-dropdown-item>
                     </b-dropdown>
                     &nbsp;&nbsp;
-                    <button @click="logout" class="button is-light" v-if="isLoggedIn">Logout</button>
+                    <button @click="logout" class="button is-light" v-if="isLoggedIn === true">Logout</button>
                     <router-link :to="{name:'cart'}" class="button is-light"><i class="fas fa-shopping-cart"></i><span style="color:red; padding: 0 5px; vertical-align: top;">{{ count }}</span></router-link>                  
                     </div>
                 </div>
@@ -71,7 +71,6 @@ export default {
            'cart',
         ]),
         ...mapActions([
-             'setLogIn',
              'setCurrentLoggedInCustomer',
              'cart/clearAllInCart'
         ])

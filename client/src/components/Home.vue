@@ -3,15 +3,17 @@
         <section class="section">
             <div class="columns">
                 <div class="column is-12">
-                    <paginate name="products" :list="allProducts" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
-                        <div class="columns is-multiline">
-                                <product :product="product" :key="product.id" v-for="product in paginated('products')"></product> 
-                        </div>
-                    </paginate>
-                    <div style="margin: 1em; padding: 1em;">
-                            <div class="paginate-links-container">
-                                <paginate-links for="products" :show-step-links="false"  :limit="3"></paginate-links>
+                    <div v-if="products">
+                        <paginate name="products" :list="products" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
+                            <div class="columns is-multiline">
+                                    <product :product="product" :key="product.id" v-for="product in paginated('products')"></product> 
                             </div>
+                        </paginate>
+                        <div style="margin: 1em; padding: 1em;">
+                                <div class="paginate-links-container">
+                                    <paginate-links for="products" :show-step-links="false"  :limit="3"></paginate-links>
+                                </div>
+                        </div>
                     </div>
                 </div>
 
@@ -48,24 +50,17 @@ export default {
         }
     },
     methods: {
-       async getProducts(context){
+       async getProducts(){
             const products = (await ProductService.index()).data.data;
             if(products){
                 this.products = [];
                 this.products = products;
-                // console.log(`Active products: ${JSON.stringify(products)}`)
-                this.$store.dispatch("setStoreProducts", this.products);
+                // this.$store.dispatch("setStoreProducts", this.products);
             }
         },
 
     },
     computed:{
-        allProducts(){
-            return this.$store.getters.getAvailableProducts;
-        },
-         ...mapActions([
-             'setStoreProducts'
-         ])
     }
 }
 </script>

@@ -10,13 +10,20 @@
                     <div class="card" style="width: 500px; padding: 1em;">
                         <form action="" >
                              <b-field label="Email">
-                                <b-input v-model="formData.email" v-validate="{required: true}" name="email"></b-input>
+                                <b-input v-model="formData.email" v-validate="{required: true}" name="email" @keyup="clearInvalid"></b-input>
                             </b-field>
                              <span>{{ errors.first('email') }}</span>
                              <b-field label="Password">
-                                <b-input v-model="formData.password" v-validate="{required: true}" name="password" type="password"></b-input>
+                                <b-input v-model="formData.password" v-validate="{required: true}" name="password" type="password" @keyup="clearInvalid"></b-input>
                             </b-field>
                              <span>{{ errors.first('password') }}</span>
+                             <div class="columns">
+                                 <div class="column" v-if="invlaidCredentials">
+                                     <div class="centered">
+                                         <strong><span style="color: red;">{{ message }}</span></strong>
+                                     </div>
+                                 </div>
+                             </div>
                              <div class="columns">
                                  <div class="column is-2">
                                        <b-button type="is-info" @click="attemptLogin">Login</b-button>
@@ -43,11 +50,17 @@ export default {
             formData: {
                 email: '',
                 password: '',
-            }
+            },
+            message: 'Invalid email or password. Please try again.',
+            invlaidCredentials: false,
         }
     },
     methods: {
+        clearInvalid(){
+         this.invlaidCredentials = false;
+        },
         attemptLogin(){
+            this.invlaidCredentials = false;
              this.$validator.validate().then(valid => {
                 if (!valid) {
                 // do stuff if not valid.
@@ -64,29 +77,23 @@ export default {
                 }));
                 let token = user.data.token;
                 let userData = user.data.data;
-                console.log(`Login Response: ${JSON.stringify(token)}`);
                 if(userData){
-                     
-                    this.$store.dispatch('setLogIn');
-                    this.$store.dispatch('setCurrentLoggedInCustomer', userData);
-                     console.log('Token: ' + token);
-                     this.$store.dispatch('setJWTtokenAction', token);
+                     if(token){
+                          this.$store.dispatch('setCurrentLoggedInCustomer', userData);
+                          this.$store.dispatch('setJWTtokenAction', token);
+                          this.$store.dispatch('setLogIn');
+                     }
                      this.$router.push({name: 'home'});
                 }
             } catch(error){
-                console.log(error)
+                this.invlaidCredentials = true;
+                console.log(`an error occured: ${JSON.stringify(error)}`);
             }
            
         }
     },
     computed: {
-        ...mapGetters({
-           
-        }),
-        ...mapActions([
-             'setLogIn',
-             'setCurrentLoggedInCustomer'
-        ])
+        
     }
 }
 </script>

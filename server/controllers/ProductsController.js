@@ -7,7 +7,8 @@ module.exports = {
     // List All Products
     async index (req, res){
         const products = await Product.findAll({
-            include: [{model : Book, include:[{all: true}]}]
+            include: [{model : Book, include:[{all: true}]}],
+            where:{qty:{[Op.gt]: 0 }}
         });
         try{
             if(products){
