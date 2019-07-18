@@ -3,7 +3,7 @@
         <section class="section">
             <div class="columns">
                 <div class="column is-12">
-                    <paginate name="products" :list="prods" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
+                    <paginate name="products" :list="allProducts" ref="paginator" role="tablist" class="paginate-list-wrapper" :per="10">
                         <div class="columns is-multiline">
                                 <product :product="product" :key="product.id" v-for="product in paginated('products')"></product> 
                         </div>
@@ -11,9 +11,11 @@
                     <div style="margin: 1em; padding: 1em;">
                             <div class="paginate-links-container">
                                 <paginate-links for="products" :show-step-links="false"  :limit="3"></paginate-links>
-                            </div><!-- paginate-links-container -->
+                            </div>
                     </div>
                 </div>
+
+
                 <!-- <div class="column is-2">
                     <h2>Shopping Cart</h2>
                     <cart></cart>
@@ -31,6 +33,9 @@ import { mapGetters } from  'vuex'
 import { mapActions} from  'vuex'
 export default {
     created(){
+        
+    },
+    mounted() {
         this.getProducts();
     },
     components:{
@@ -39,28 +44,25 @@ export default {
     data: function(){
         return {
           paginate: ['products'],
-          prods: [],
+          products: [],
         }
     },
     methods: {
        async getProducts(context){
             const products = (await ProductService.index()).data.data;
             if(products){
-                this.prods = products;
-        
-                // this.$store.dispatch("setStoreProducts", products);
+                this.products = [];
+                this.products = products;
+                // console.log(`Active products: ${JSON.stringify(products)}`)
+                this.$store.dispatch("setStoreProducts", this.products);
             }
         },
 
     },
     computed:{
-        // products(){
-        //     return this.$store.getters.getAvailableProducts
-        // },
-
-        ...mapGetters({
-             // products: 'products/getAvailableProducts'
-        }),
+        allProducts(){
+            return this.$store.getters.getAvailableProducts;
+        },
          ...mapActions([
              'setStoreProducts'
          ])

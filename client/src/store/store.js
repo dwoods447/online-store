@@ -6,7 +6,7 @@ Vue.use(Vuex);
 import cart from './modules/cart'
 const store = new Vuex.Store({
     // plugins: [new VuexPersistence({supportCircular: true}).plugin],
-      plugins: [createPersistedState()],
+     plugins: [createPersistedState()],
     modules: {
         cart
     },
@@ -114,10 +114,11 @@ const store = new Vuex.Store({
         },
         getPurchaseTotal(state, getters){
             return state.purchaseTotal;
+        },
+        getAvailableProducts(state){
+          //console.log(`Getter products: ${JSON.stringify(state.products)}`);  
+          return state.products.filter(product => product.qty > 0);
         }
-        // getAvailableProducts(state){
-        //         return state.products.filter(product => product.qty > 0);
-        // }
          
     },
     

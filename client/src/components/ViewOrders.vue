@@ -4,23 +4,27 @@
             <h2>My Orders: </h2>
             <div class="columns">
                 <div class="column" v-if="orders">
-                    <b-table :data="ordersData" :columns="columns">
-                    
-                        <template slot-scope="props">
-                            <b-table-column field="id" label="Order Number" sortable>
-                                {{ props.row.id }}
-                            </b-table-column>
-                             <b-table-column field="order_date" label="Order Date" sortable>
-                                {{ props.row.order_date | date }}
-                            </b-table-column>
-                             <b-table-column field="status" label="Status">
-                                {{ props.row.status }}
-                            </b-table-column>
-                             <b-table-column field="status" label="Status" >
-                                <router-link :to="{name: 'view.order.products', params:{orderId:  props.row.id }, query: {orderId:  props.row.id, customerId: customerId }}">View Details</router-link>
-                            </b-table-column>
-                        </template>    
-                    </b-table>
+                    <div class="b-table">
+                        <table class="table has-mobile-cards">
+                        <thead>
+                            <tr>
+                                
+                                    <th v-for="column in columns" :key="column.field" class="is-sortable"> 
+                                        <div class="th-wrap">{{ column.label }}</div>
+                                    </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="order in ordersData" :key="order.id">
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.order_date | date }}</td>
+                                <td>{{ order.status }}</td>
+                                <td><router-link :to="{name: 'view.order.products', params:{orderId:  order.id }, query: {orderId:  order.id, customerId: customerId }}">View Details</router-link></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         </section>

@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 module.exports.bcrypt = bcrypt;
 const app = express();
 const port = config.port;
-
+const csrfProtection = require('./middleware/csrf');
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
@@ -39,7 +39,15 @@ app.use(session({
   saveUninitialized: false
 }))
 
-
+// app.use(csrfProtection, function (req, res, next) {
+//   const token = req.csrfToken();
+//   console.log('\r\n\r\n');
+//   console.log(`Token generated: ${JSON.stringify(token)}`);
+//   console.log('\r\n\r\n');
+//   res.cookie('XSRF-TOKEN', token);     
+//   res.locals._csrf = req.csrfToken();
+//   next();
+// });
 
 app.use('/admin', admin);
 app.use('/books', books);
