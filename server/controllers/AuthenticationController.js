@@ -1,5 +1,5 @@
 const { Customer } = require('../models');
-const bcrypt = require('../app').bcrypt
+const bcrypt = require('../src/app').bcrypt
 const jwt  = require('jsonwebtoken');
 const config = require('../config/config');
 
