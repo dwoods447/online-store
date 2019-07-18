@@ -18,7 +18,7 @@ const db = {};
 //     config.db.development.dialect
 // )
 const sequelize  = new Sequelize(config.db.production.url, { 
-    config.db.production.dialect 
+    dialect: 'postgres' 
 });
       // Loop through each file in the current directory excluding index.js and import model into empty db object
         fs.readdirSync(__dirname)
