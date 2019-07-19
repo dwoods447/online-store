@@ -8,7 +8,11 @@ module.exports = {
     async index (req, res){
         const products = await Product.findAll({
             include: [{model : Book, include:[{all: true}]}],
-            where:{qty:{[Op.gt]: 0 }}
+            where:{qty:{[Op.gt]: 0 }},
+            order: [
+                ['id', 'ASC']
+            ],
+            
         });
         try{
             if(products){
