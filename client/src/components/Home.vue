@@ -82,4 +82,7 @@ export default {
         display: block;
         margin: 0 auto;
     }
+    .card-header-title{
+        text-align: center;
+    }
 </style>
