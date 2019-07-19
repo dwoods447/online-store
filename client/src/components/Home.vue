@@ -78,4 +78,8 @@ export default {
         width:250px;
         margin: 0 auto !important;
     }
+    .card-image > img{
+        display: block;
+        margin: 0 auto;
+    }
 </style>
