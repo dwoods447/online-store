@@ -10,7 +10,7 @@
                       <div class="panel-block" style="display: block;">
                             <div class="columns">
                                 <div class="column is-2">
-                                    <div v-if="product.Book">
+                                    <div v-if="product.Book" class="product-image">
                                         <img :src="product.Book.image" alt="">
                                     </div>
                                 </div>
@@ -177,12 +177,16 @@ export default {
         ...mapState([
             'cart',
         ]),
-        // ...mapActions([
-        //      'cart/addProductToShoppingCart',
-        //      'cart/calculateCartTotal',
-        //      'cart/calculateTotalCartItems',
-        //      'cart/removeProductFromShoppingCart',
-        //  ])
+        
     }
 }
 </script>
+<style scoped>
+@media screen and (max-width: 825px){
+      .product-image > img{
+        width: 230px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+</style>

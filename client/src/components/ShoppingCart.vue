@@ -10,7 +10,7 @@
                             <div class="columns">
                                 <div class="column is-6">
                                     <div class="columns">
-                                        <div class="column is-3"><img :src="product.product.Book.image" style="width: 65%;"></div>
+                                        <div class="column is-3"><div class="product-image"><img :src="product.product.Book.image" style="width: 65%;"></div></div>
                                         <div class="column is-9">
                                             <ul>
                                                 <li>{{ product.product.Book.title }}</li>
@@ -121,3 +121,12 @@ export default {
    
 }
 </script>
+<style scoped>
+@media screen and (max-width: 825px){
+      .product-image > img{
+        width: 230px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+</style>

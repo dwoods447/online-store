@@ -67,6 +67,7 @@ export default {
 <style>
     .card-container{
         width: 250px;
+        margin: 0 auto;
        
     }
     .card-content{

@@ -7,7 +7,7 @@
                      <div class="block" style="margin: 0 auto; width: 30%;">
                         
                     </div>
-                    <div class="card" style="width: 500px; padding: 1em;">
+                    <div class="card" style="width: 100%; padding: 1.2em; margin: 0 auto;">
                         <form action="" >
                              <b-field label="Email">
                                 <b-input v-model="formData.email" v-validate="{required: true}" name="email" @keyup="clearInvalid"></b-input>

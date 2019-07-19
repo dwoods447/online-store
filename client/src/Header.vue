@@ -3,14 +3,15 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
              <router-link :to="{name:'home'}" class="navbar-item"><h2><strong>Online Book-Store</strong></h2></router-link>
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"  @click="showMenu = !showMenu"
+          :class="{ 'is-active' : showMenu }">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active' : showMenu }">
                 <div class="navbar-start">
                  <router-link :to="{name: 'home'}" class="navbar-item">Home</router-link>
                  <router-link :to="{name: 'book.categories'}" class="navbar-item">Browse Categories</router-link>
@@ -45,7 +46,7 @@ import { mapActions} from  'vuex'
 export default {
     data(){
         return {
-
+            showMenu: false,
         }
     },
     methods: {
@@ -56,7 +57,7 @@ export default {
             AuthenticationService.logout();
             this.$router.push({name: 'home'});
            
-     }
+     },
     },
     computed:{
         // isLoggedIn(){
