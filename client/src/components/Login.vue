@@ -17,6 +17,16 @@
                                 <b-input v-model="formData.password" v-validate="{required: true}" name="password" type="password" @keyup="clearInvalid"></b-input>
                             </b-field>
                              <span>{{ errors.first('password') }}</span>
+                             <br/>
+                              <div class="columns">
+                                 <div class="column">
+                                     <div class="centered">
+                                         <h4>Demo Credentials:</h4>
+                                         <p><strong>Email:</strong> &nbsp;<span style="color: green;">user1@email.com</span></p>
+                                         <p><strong>Password:</strong> &nbsp;<span style="color: green;">pass</span></p>
+                                     </div>
+                                 </div>
+                             </div>
                              <div class="columns">
                                  <div class="column" v-if="invlaidCredentials">
                                      <div class="centered">
