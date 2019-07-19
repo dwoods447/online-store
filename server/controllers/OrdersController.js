@@ -3,10 +3,8 @@ const { Order, OrderProduct, Product }  = require('../models');
 module.exports = {
     async orderProducts(req, res){
         try {
-            
             // Enter data in Orders table
             let todayDate = new Date().toISOString().slice(0,10);
-            // console.log(`Today's Date ${todayDate}`);
             const order  = await Order.create({
                 order_date: todayDate,
                 shipping_address: req.body.shipping.address,
@@ -14,14 +12,12 @@ module.exports = {
                 shipping_country : req.body.shipping.country,
                 CustomerId: req.body.customer.id 
             })
-        //     console.log(`Order: ${JSON.stringify(order)}`);
-        //     console.log(`Shipping Info: ${JSON.stringify(req.body.shipping, null, 2)}`);
-        //    console.log('\r\n\r\n');
-        //    console.log(`Customer Info: ${JSON.stringify(req.body.customer,null, 2)}`);
+            // If the order was saved loop through req body and get products key
           if(order){
             for(let property in req.body){
                 if(req.body.hasOwnProperty(property) && property === 'products'){
                     req.body.products.forEach((product)=> {
+                        // Loop through each product in the array and
                          // Enter data in OrderProducts table 
                         let orderProduct = OrderProduct.create({
                             qty: product.quantity,
@@ -29,17 +25,17 @@ module.exports = {
                             OrderId: order.id,
                             ProductId: product.id
                         })
+                        // If product saved in Order Product table
                         if(orderProduct){
-                            // Decrease product qty's in Products table
+                            // Decrease product's total qty in Products table
                             Product.findOne({
                                 attributes:['qty'], where: {id: product.id}
                             }).then(data => {
-                                console.log(`Data: ${JSON.stringify(data)}`);
                                 if(data){
-                                    console.log(`Total Qty: ${data.qty}`);
-                                    console.log(`Qty Bought: ${product.quantity}`);
-                                    let newQty = parseInt(data.qty) - parseInt(product.quantity)
-                                    console.log(`New Qty: ${newQty}}`);
+                                    // If product was found update its qty attribute
+                                    let totalQty = parseInt(data.qty);
+                                    let qtyOrdered = parseInt(product.quantity);
+                                    let newQty = totalQty - qtyOrdered; 
                                     Product.update({qty: newQty} ,{where:{id: product.id}});
                                  }
                              });
@@ -118,7 +114,7 @@ module.exports = {
                 data: []
             })     
         }
-    }catch(error){
+    } catch(error){
             res.send({
                 error: error
             })
