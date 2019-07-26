@@ -40,7 +40,6 @@ export default {
             const books = (await CategoriesService.getBookCategory(categoryId)).data.data;
             if(books){
                 this.books = books;
-                console.log(`Books In This Category: ${JSON.stringify(this.books, null, 2)}`);
             }
         }
     }

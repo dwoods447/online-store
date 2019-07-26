@@ -59,7 +59,6 @@ module.exports = {
             const customerOrders = await Order.findAll({
                 where: {CustomerId: req.params.customerId}
             })
-            console.log(`Customer Order Back-End ${JSON.stringify(customerOrders)}`);
             if(customerOrders.length > 0){
                 res.send({
                     data: customerOrders

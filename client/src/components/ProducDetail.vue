@@ -157,7 +157,6 @@ export default {
             console.log(productID);
                 if(bookID && productID){
                     const product = (await ProductService.getProductByBookId(bookID, productID)).data.data[0];
-                    console.log(`Details: ${JSON.stringify(product, null, 2)}`)
                         if(product){
                         this.notAvailable = false;
                         this.product = product;
