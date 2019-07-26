@@ -1,125 +1,121 @@
 [{
-  "price": 61.86,
-  "qty": 25,
-  "BookId": 10
+  "price": 290.44,
+  "qty": 26,
+  "BookId": 2
 }, {
-  "price": 146.41,
-  "qty": 50,
-  "BookId": 25
-}, {
-  "price": 73.11,
-  "qty": 34,
-  "BookId": 17
-}, {
-  "price": 197.06,
-  "qty": 35,
+  "price": 271.09,
+  "qty": 26,
   "BookId": 19
 }, {
-  "price": 180.73,
-  "qty": 23,
+  "price": 298.46,
+  "qty": 30,
   "BookId": 12
 }, {
-  "price": 196.41,
-  "qty": 27,
+  "price": 162.98,
+  "qty": 45,
   "BookId": 5
 }, {
-  "price": 128.4,
-  "qty": 45,
-  "BookId": 7
-}, {
-  "price": 263.93,
-  "qty": 18,
-  "BookId": 3
-}, {
-  "price": 61.75,
-  "qty": 27,
-  "BookId": 11
-}, {
-  "price": 167.87,
-  "qty": 10,
+  "price": 257.14,
+  "qty": 15,
   "BookId": 16
 }, {
-  "price": 95.34,
-  "qty": 45,
-  "BookId": 27
+  "price": 308.98,
+  "qty": 16,
+  "BookId": 6
 }, {
-  "price": 113.71,
-  "qty": 19,
-  "BookId": 4
+  "price": 98.62,
+  "qty": 31,
+  "BookId": 17
 }, {
-  "price": 182.84,
-  "qty": 28,
-  "BookId": 11
+  "price": 36.19,
+  "qty": 35,
+  "BookId": 28
 }, {
-  "price": 23.69,
-  "qty": 15,
-  "BookId": 5
+  "price": 132.95,
+  "qty": 12,
+  "BookId": 15
 }, {
-  "price": 305.16,
-  "qty": 14,
-  "BookId": 13
+  "price": 289.61,
+  "qty": 27,
+  "BookId": 12
 }, {
-  "price": 43.55,
-  "qty": 14,
+  "price": 279.42,
+  "qty": 47,
+  "BookId": 28
+}, {
+  "price": 95.8,
+  "qty": 40,
+  "BookId": 28
+}, {
+  "price": 67.31,
+  "qty": 39,
   "BookId": 3
 }, {
-  "price": 244.11,
-  "qty": 38,
-  "BookId": 18
+  "price": 141.63,
+  "qty": 42,
+  "BookId": 10
 }, {
-  "price": 49.62,
-  "qty": 43,
-  "BookId": 30
+  "price": 305.64,
+  "qty": 50,
+  "BookId": 8
 }, {
-  "price": 100.28,
-  "qty": 28,
-  "BookId": 7
+  "price": 69.39,
+  "qty": 26,
+  "BookId": 21
 }, {
-  "price": 193.69,
-  "qty": 23,
+  "price": 161.42,
+  "qty": 24,
+  "BookId": 11
+}, {
+  "price": 226.02,
+  "qty": 36,
+  "BookId": 14
+}, {
+  "price": 251.31,
+  "qty": 16,
   "BookId": 20
 }, {
-  "price": 226.32,
-  "qty": 12,
-  "BookId": 17
-}, {
-  "price": 181.84,
-  "qty": 22,
+  "price": 224.75,
+  "qty": 24,
   "BookId": 7
 }, {
-  "price": 110.47,
-  "qty": 27,
-  "BookId": 1
+  "price": 200.14,
+  "qty": 12,
+  "BookId": 27
 }, {
-  "price": 78.44,
-  "qty": 25,
-  "BookId": 13
-}, {
-  "price": 119.97,
-  "qty": 48,
-  "BookId": 30
-}, {
-  "price": 78.84,
-  "qty": 33,
+  "price": 31.62,
+  "qty": 34,
   "BookId": 26
 }, {
-  "price": 235.88,
-  "qty": 27,
-  "BookId": 9
+  "price": 109.52,
+  "qty": 19,
+  "BookId": 25
 }, {
-  "price": 74.36,
+  "price": 174.1,
+  "qty": 15,
+  "BookId": 6
+}, {
+  "price": 155.78,
   "qty": 29,
-  "BookId": 17
+  "BookId": 11
 }, {
-  "price": 148.66,
-  "qty": 27,
-  "BookId": 19
+  "price": 121.9,
+  "qty": 11,
+  "BookId": 4
 }, {
-  "price": 130.75,
-  "qty": 18,
+  "price": 236.06,
+  "qty": 26,
   "BookId": 16
-},{
-  "price": 148.75,
-  "qty": 18,
-  "BookId": 8
+}, {
+  "price": 54.1,
+  "qty": 20,
+  "BookId": 6
+}, {
+  "price": 307.06,
+  "qty": 33,
+  "BookId": 3
+}, {
+  "price": 92.59,
+  "qty": 32,
+  "BookId": 29
 }]

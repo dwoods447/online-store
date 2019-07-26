@@ -59,6 +59,7 @@ export default {
     methods: {
        async getProducts(){
             const products = (await ProductService.index()).data.data;
+             console.log(`Products ${JSON.stringify(products, null, 2)}`)
             if(products){
                 this.products = [];
                 this.products = products;

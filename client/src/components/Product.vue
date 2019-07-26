@@ -18,7 +18,7 @@
 export default {
     props: ['product'],
     created(){
-
+       
     },
     data(){
         return {
