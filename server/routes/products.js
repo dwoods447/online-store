@@ -4,7 +4,7 @@ const ProductsController  = require('../controllers/ProductsController.js');
 
 router.get('/all', ProductsController.index);
 router.get('/product/:productId', ProductsController.show);
-router.get('/product/book/:bookId/bookInfo', ProductsController.getProductByBookId)
+router.get('/product/:productId/book/:bookId/bookInfo', ProductsController.getProductByBookId)
 router.get('/search/:search', ProductsController.searchProduct);
 router.post('/decrease/product/:productId/quantity', ProductsController.decreaseProductQty);
 router.post('/increase/product/:productId/quantity', ProductsController.increaseProductQty);

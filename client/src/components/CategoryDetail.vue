@@ -4,7 +4,7 @@
         <div class="columns is-multi-line" v-if="books.length > 0">
              
             <div class="column is-narrow" v-for="book in books" :key="book.id">
-                <router-link :to="{name: 'product.detail', params: {bookId: book.BookId, product: {}}}">
+                <!-- <router-link :to="{name: 'product.detail', params: {bookId: book.BookId, product: {}}}"> -->
                     <div class="card-container">
                         <div class="card">                       
                             <div class="card-content">
@@ -14,7 +14,7 @@
                                 <!-- <i class="card-footer-item" href="javascript:void(0);" @click="addProductToCart(product)"><i class="fas fa-shopping-cart"></i></a> -->
                         </div>
                 </div>  
-                </router-link>
+                <!-- </router-link> -->
             </div>
         </div>
         <div v-if="books.length <= 0">
@@ -24,7 +24,6 @@
     </div>
 </template>
 <script>
-import CategoryService from '../services/CategoriesService'
 import CategoriesService from '../services/CategoriesService';
 export default {
     created(){
@@ -41,6 +40,7 @@ export default {
             const books = (await CategoriesService.getBookCategory(categoryId)).data.data;
             if(books){
                 this.books = books;
+                console.log(`Books In This Category: ${JSON.stringify(this.books, null, 2)}`);
             }
         }
     }

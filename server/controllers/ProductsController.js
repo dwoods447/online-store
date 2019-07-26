@@ -117,9 +117,17 @@ module.exports = {
     // Find Product by book Id
     async getProductByBookId(req, res){
         try {
-            const product =  await Product.findAll({
+            let product;
+            if(req.params.productId){
+                product =  await Product.findAll({
+                    where:{BookId: req.params.bookId, id: req.params.productId}, include:[{model: Book, include:[{model: Publisher}]}]
+                })
+            } 
+
+            product =  await Product.findAll({
                 where:{BookId: req.params.bookId}, include:[{model: Book, include:[{model: Publisher}]}]
             })
+           
             if(product){
                 res.send({
                     data:  product

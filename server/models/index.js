@@ -8,18 +8,24 @@ const fs = require('fs');
 const config = require('../config/config');
 //Initialize empty db object
 const db = {};
+let sequelize;
 
 
-// Sequielize connection
-// const sequelize  = new Sequelize(
-//     config.db.development.database, 
-//     config.db.development.username, 
-//     config.db.development.password,
-//     config.db.development.dialect
-// )
-const sequelize  = new Sequelize(config.db.production.url, { 
-    dialect: 'postgres' 
-});
+if(config.db.production.url !== undefined){
+    sequelize  = new Sequelize(config.db.production.url, { 
+        dialect: 'postgres' 
+    });
+} else {
+    // Sequielize connection
+   sequelize  = new Sequelize(
+    config.db.development.database, 
+    config.db.development.username, 
+    config.db.development.password,
+    config.db.development.dialect
+)
+}
+
+
       // Loop through each file in the current directory excluding index.js and import model into empty db object
         fs.readdirSync(__dirname)
         .filter((file)=>

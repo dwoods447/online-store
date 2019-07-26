@@ -14,7 +14,10 @@ export default{
     getProduct(productId){
         return Api.get(`/products/product/${productId}`)
     },
-    getProductByBookId(bookId){
-        return Api.get(`/products/product/book/${bookId}/bookInfo`)
+    getProductByBookId(bookId, productID){
+        return Api.get(`/products/product/${productID}/book/${bookId}/bookInfo`)
+    },
+    getProductIdByBookId(bookId){
+        return Api.get(`/products/product/${productID}/book/${bookId}/bookInfo`)
     }
 }

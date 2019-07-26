@@ -153,8 +153,11 @@ export default {
             try {
             this.product = {};
             const bookID = this.$route.params.bookId;
-                if(bookID){
-                    const product = (await ProductService.getProductByBookId(bookID)).data.data[0];
+            const productID = this.$route.params.productId;
+            console.log(productID);
+                if(bookID && productID){
+                    const product = (await ProductService.getProductByBookId(bookID, productID)).data.data[0];
+                    console.log(`Details: ${JSON.stringify(product, null, 2)}`)
                         if(product){
                         this.notAvailable = false;
                         this.product = product;

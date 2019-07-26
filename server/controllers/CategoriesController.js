@@ -1,6 +1,7 @@
 const { BookCategory } = require('../models');
 const { Category } = require('../models');
 const { Book } = require('../models');
+const { Product } = require('../models');
 const  { db } = require('../models')
 module.exports = {
     // List all Categories
@@ -43,7 +44,7 @@ module.exports = {
         const catID = req.params.categoryId;
         try {
             const book_cat = await BookCategory.findAll({
-                where: {CategoryId: catID}, include:[{model: Book}, {model: Category}]
+                where: {CategoryId: catID}, include:[{model: Book, include:[{all: true}]}, {model: Category}]
             });
              if(book_cat){
                 res.send({

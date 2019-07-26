@@ -1,6 +1,12 @@
 <template>
+ <div class="container-fluid">
+     <div style="background-image: url('https://res.cloudinary.com/dpwoods/image/upload/v1564113153/img_assets/reading.jpg'); background-attachment: fixed;  background-position: bottom; background-repeat: no-repeat; background-size: cover;">
+        <div style="position:relative; top: 50%; left: 50%;"><h2 style="color: #fff; font-size: 3.4em;">Welcome to the Online Book Store...</h2></div>
+         <img src="http://placehold.it/1920x1080" style="height: 725px; width: 100%; visibility: hidden;">
+     </div>
     <div class="container">
         <section class="section">
+            
             <div class="columns">
                 <div class="column is-12">
                     <div v-if="products">
@@ -25,6 +31,7 @@
             </div>
         </section>
     </div>
+ </div>
 </template>
 <script>
 import Product from './Product'
