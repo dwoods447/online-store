@@ -89,11 +89,13 @@ export default {
                 let userData = user.data.data;
                 if(userData){
                      if(token){
-                          this.$store.dispatch('setCurrentLoggedInCustomer', userData);
-                          this.$store.dispatch('setJWTtokenAction', token);
-                          this.$store.dispatch('setLogIn');
+                         this.$store.dispatch('setJWTtokenAction', token); 
+                         this.$store.dispatch('setCurrentLoggedInCustomer', userData);
+                         this.$store.dispatch('setLogIn');
+                         window.location = "/";
+                         this.$router.push({name: 'home'});
                      }
-                     this.$router.push({name: 'home'});
+                    
                 }
             } catch(error){
                 this.invlaidCredentials = true;

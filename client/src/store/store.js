@@ -23,7 +23,7 @@ const store = new Vuex.Store({
         setLogOutMutation(state){
             state.isLoggedIn = false;
             state.customer = null;
-            state.csrfToken = null;
+            state.jwtToken = null;
             state.purchasedProducts = [];
             state.purchaseTotal = 0;
         },
@@ -103,7 +103,7 @@ const store = new Vuex.Store({
             return state.isLoggedIn;
         },
         getToken(state, getters){
-            return state.csrfToken;       
+            return state.jwtToken;       
         },
         getCustomer(state, getters){
             return state.customer;

@@ -6,15 +6,10 @@ const path = require('path')
 const morgan  = require('morgan');
 const cors = require('cors');
 const {sequelize} = require('../models');
-//Bring in express session
-const session = require('express-session');
-// Brinng in connect-session-sequelize
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const bcrypt = require('bcryptjs');
 module.exports.bcrypt = bcrypt;
 const app = express();
 const port = config.port;
-const csrfProtection = require('../middleware/csrf');
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
@@ -28,27 +23,6 @@ const authors = require('../routes/authors');
 const customers = require('../routes/customers');
 const authentication = require('../routes/authentication');
 const orders = require('../routes/orders')
-// const csrf = require('../routes/csrf');
-
-app.use(session({
-  secret: 'keyboard cat',
-  store: new SequelizeStore({
-    db: sequelize
-  }),
-  resave: false,
-  proxy: true,
-  saveUninitialized: false
-}))
-
-// app.use(csrfProtection, function (req, res, next) {
-//   const token = req.csrfToken();
-//   console.log('\r\n\r\n');
-//   console.log(`Token generated: ${JSON.stringify(token)}`);
-//   console.log('\r\n\r\n');
-//   res.cookie('XSRF-TOKEN', token);     
-//   res.locals._csrf = req.csrfToken();
-//   next();
-// });
 
 
 // Front-End Client 

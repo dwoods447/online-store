@@ -4,10 +4,9 @@ const jwt  = require('jsonwebtoken');
 const config = require('../config/config');
 
 function jwtSignCustomer(customer){
-    const ONE_DAY = 60 * 60 * 24 * 1;
-    return jwt.sign(customer, config.auth.jwtSecret, {expiresIn: ONE_DAY} )
+    const ONE_HR = Math.floor(Date.now() / 1000) + (60 * 60);
+    return jwt.sign({email: customer.email, customerId: customer.id}, config.auth.jwtSecret, {expiresIn: ONE_HR } )
 }
-
 
 module.exports = {
     async login(req, res){
@@ -17,7 +16,7 @@ module.exports = {
             where:{email: email}
         })
         if(!customer){
-            res.status(403).send({
+            res.status(403).json({
                 'error': 'Invalid email or password'
             });
         } else {
@@ -29,8 +28,6 @@ module.exports = {
                 })
               } else {
                 const customerJSON = customer.toJSON();
-                req.session.isLoggedIn = true;
-                req.session.customer = customer;
                 res.status(200).json({
                     data: customer,
                     token: jwtSignCustomer(customerJSON)
@@ -44,7 +41,8 @@ module.exports = {
         }
     },
     async logout(req, res){
-        req.session.isLoggedIn = false;
-        res.send();
+        res.status(200).json({
+            'success': 'logged out'
+        });
     }
 }
