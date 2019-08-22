@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
              <router-link :to="{name:'home'}" class="navbar-item"><h2><strong>Online Book-Store</strong></h2></router-link>
